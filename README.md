@@ -9,10 +9,16 @@ Chrome 与 Edge 使用同一套 MV3 规范，本扩展在两者上通用，无�
 
 ```
 localplayer/
-├── manifest.json     # MV3 扩展清单（action.default_popup → popup.html）
+├── manifest.json     # MV3 扩展清单（popup + options_page + background + web_accessible_resources）
 ├── popup.html        # 弹窗页面结构
-├── popup.css         # 样式
-├── popup.js          # 播放逻辑（渲染列表 / 切换音视频 / 自动连播）
+├── popup.css         # 弹窗样式
+├── popup.js          # 播放逻辑（混合加载：远端优先 + 本地打包兜底）
+├── options.html      # 选项页结构
+├── options.css       # 选项页样式
+├── options.js        # 选项页逻辑（读写后端地址到 chrome.storage.sync）
+├── background.js     # MV3 service worker（拉取后端 /api/list 清单）
+├── server.py         # 可选 Flask 后端（/api/list + /media/<file>）
+├── media/            # 随扩展打包的媒体（含 README 说明）
 ├── requirements.txt  # 可选 Flask 后端依赖
 ├── LICENSE           # MIT
 └── README.md
@@ -26,6 +32,15 @@ localplayer/
 2. 右上角开启「开发者模式」。
 3. 点击「加载已解压的扩展程序」，选择本目录 `localplayer`。
 4. 点击工具栏图标，弹出播放器。
+
+## 选项页（配置后端地址）
+
+右键扩展图标 → 「选项」，或在 `chrome://extensions` 详情页点击「扩展选项」，打开设置页：
+
+- **后端地址 (Backend URL)**：填写你的 Flask 后端基址（默认 `http://127.0.0.1:5000`）。
+  `background.js` 每次拉清单时都会读取 `chrome.storage.sync.backendUrl`，保存后立即对新打开的 popup 生效。
+- 留空或格式无效 → popup 回退到随扩展打包的本地媒体。
+- 「恢复默认」一键重置为 `http://127.0.0.1:5000`。
 
 ## 媒体来源（两种模式）
 
