@@ -10,3 +10,5 @@
 
 支持的扩展名见 `server.py` 的 `MEDIA_TYPES`（mp4/webm/mov/mkv/mp3/ogg/wav/m4a/aac/flac）。
 二进制媒体不随仓库提交（见 `.gitignore`），请自行放入。
+
+> 此目录下的媒体文件由用户自行放置、不纳入版本管理。
