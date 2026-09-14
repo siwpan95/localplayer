@@ -84,7 +84,10 @@ function ensureCastRelay() {
     // 转发给 offscreen（offscreen 以 castRelayIn 接收）
     chrome.runtime.sendMessage({ target: 'castRelayIn', msg: m }).catch(() => {});
   };
-  castRelayWs.onclose = () => { castRelayWs = null; };
+  castRelayWs.onclose = () => {
+    castRelayWs = null;
+    chrome.runtime.sendMessage({ target: 'offscreen', cmd: 'castRelayLost' }).catch(() => {});
+  };
   castRelayWs.onerror = () => { try { castRelayWs.close(); } catch (_) {} castRelayWs = null; };
 }
 
