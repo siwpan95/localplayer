@@ -216,7 +216,10 @@ function connectSignaling() {
         let m; try { m = JSON.parse(e.data); } catch (_) { return; }
         handleSignalingMessage(m);
     };
-    ws.onclose = () => { /* 投送停止后由 stopCast 清理 */ };
+    ws.onclose = () => {
+        // 信令断开（如后端 server.py 被关闭）：仅当仍在使用直连且投送进行中时视为意外断开
+        if (castActive && !useRelay) onSignalingLost();
+    };
 }
 
 function startCast() {
@@ -234,6 +237,12 @@ function stopCast() {
     notifyCastStatus();
     if (pc) { try { pc.close(); } catch (e) {} pc = null; }
     if (ws) { try { ws.close(); } catch (e) {} ws = null; }
+}
+
+// 信令链路意外断开（如后端服务停止）：清理并让 popup 退出「投送中」状态，避免滞后显示
+function onSignalingLost() {
+    if (!castActive) return;
+    stopCast();
 }
 
 chrome.runtime.onMessage.addListener((msg) => {
@@ -293,6 +302,9 @@ chrome.runtime.onMessage.addListener((msg) => {
             audio.pause(); audio.removeAttribute('src'); audio.load();
             videoEl.pause(); videoEl.removeAttribute('src'); videoEl.hidden = true;
             currentPath = '';
+            break;
+        case 'castRelayLost':
+            onSignalingLost();
             break;
     }
 });
