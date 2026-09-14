@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "轻量播放器 · 本地媒体",
-  "version": "1.2.1",
+  "version": "1.2.3",
   "description": "Chrome / Edge 通用插件：本地媒体播放器。支持 background service worker 拉取后端清单，并回退到随扩展打包的 web_accessible_resources 媒体。可在选项页配置后端地址。",
   "action": {
     "default_title": "轻量播放器",

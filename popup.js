@@ -112,6 +112,50 @@
         }
     }
 
+    // ---------- HLS（.m3u8）播放支持 ----------
+    // MV3 禁止运行时加载远程脚本，故 hls.min.js 以本地资源打包（见 popup.html）。
+    let hlsInstance = null;
+
+    function destroyHls() {
+        if (hlsInstance) {
+            try { hlsInstance.destroy(); } catch (e) { /* ignore */ }
+            hlsInstance = null;
+        }
+    }
+
+    function isHlsSource(path) {
+        return /\.m3u8(\?[^#]*)?$/i.test(path);
+    }
+
+    // 给媒体元素挂载源：HLS 走 hls.js，普通格式直连；autoplay 控制是否立即播放
+    function attachSource(el, file, autoplay) {
+        destroyHls();
+        const doPlay = () => {
+            if (autoplay) {
+                el.play().catch(err => console.warn('播放失败（可能需用户交互）:', err));
+            }
+        };
+
+        if (isHlsSource(file.path) && window.Hls && Hls.isSupported()) {
+            hlsInstance = new Hls();
+            hlsInstance.loadSource(file.path);
+            hlsInstance.attachMedia(el);
+            hlsInstance.on(Hls.Events.MANIFEST_PARSED, doPlay);
+            hlsInstance.on(Hls.Events.ERROR, (evt, data) => {
+                if (data && data.fatal) console.warn('HLS 致命错误:', data.type, data.details);
+            });
+        } else if (isHlsSource(file.path) && el.canPlayType('application/vnd.apple.mpegurl')) {
+            // Safari / iOS 原生支持 HLS
+            el.src = file.path;
+            el.load();
+            doPlay();
+        } else {
+            el.src = file.path;
+            el.load();
+            doPlay();
+        }
+    }
+
     // ---------- 核心播放函数 ----------
     function playByIndex(index) {
         if (index < 0 || index >= files.length) return;
@@ -126,19 +170,11 @@
 
         if (file.type === 'audio') {
             const audio = switchToAudioMode();
-            audio.src = file.path;
-            audio.load();
-            audio.play().catch(err => {
-                console.warn('音频播放失败（可能需用户交互）:', err);
-            });
+            attachSource(audio, file, true);
             player.pause();
         } else {
             switchToVideoMode();
-            player.src = file.path;
-            player.load();
-            player.play().catch(err => {
-                console.warn('视频播放失败（可能需用户交互）:', err);
-            });
+            attachSource(player, file, true);
         }
     }
 
@@ -199,12 +235,10 @@
 
             const firstFile = files[0];
             if (firstFile.type === 'video') {
-                player.src = firstFile.path;
-                player.load();
+                attachSource(player, firstFile, false);
             } else {
                 const audio = switchToAudioMode();
-                audio.src = firstFile.path;
-                audio.load();
+                attachSource(audio, firstFile, false);
             }
         }
     }

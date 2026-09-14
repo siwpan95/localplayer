@@ -3,6 +3,12 @@
 所有重要变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.2.3] - 2026-09-14
+
+### 新增
+- 接入 hls.js（本地打包于 `lib/hls.min.js`，Apache-2.0）实现 `.m3u8` / HLS 播放；`popup.js` 检测到 HLS 源时自动接管，Safari / iOS 走原生 HLS。
+- 修正 manifest 版本号（v1.2.2 漏改，停留在 `1.2.1`）。
+
 ## [1.2.2] - 2026-09-14
 
 ### 修复

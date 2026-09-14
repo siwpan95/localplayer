@@ -13,6 +13,7 @@ localplayer/
 ├── popup.html        # 弹窗页面结构
 ├── popup.css         # 弹窗样式
 ├── popup.js          # 播放逻辑（混合加载：远端优先 + 本地打包兜底）
+├── lib/hls.min.js     # 本地打包的 hls.js（Apache-2.0），用于播放 .m3u8
 ├── options.html      # 选项页结构
 ├── options.css       # 选项页样式
 ├── options.js        # 选项页逻辑（读写后端地址到 chrome.storage.sync）
@@ -91,6 +92,16 @@ localplayer/
 **配套 Flask 后端**：`server.py` 提供 `GET /api/list`（返回 `{name,path,type}` 数组，
 `path` 为完整 URL）与 `GET /media/<file>`。运行见文件头注释。
 
+## HLS（.m3u8）播放
+
+`index.m3u8` 这类 HLS 播放列表，Chrome 原生 `<video>` 无法直接播放。本项目在 `lib/hls.min.js`
+本地打包 [hls.js](https://github.com/video-dev/hls.js)（Apache-2.0；因 MV3 禁止运行时加载远程脚本，必须本地打包），
+`popup.js` 检测到 `.m3u8` 源时自动用 hls.js 接管播放（Safari / iOS 走原生 HLS）。
+
+> 注意：`.ts` 分片由 `.m3u8` 引用，无需（也不应）单独列出，生成清单时已被 `gen_media_manifest.py` 跳过。
+
 ## 许可
 
 MIT License，见 [LICENSE](LICENSE)。
+
+第三方依赖：[hls.js](https://github.com/video-dev/hls.js)（Apache-2.0）以本地资源 `lib/hls.min.js` 打包，用于 `.m3u8` 播放。
