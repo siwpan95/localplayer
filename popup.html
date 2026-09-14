@@ -23,6 +23,24 @@
             <button id="pipBtn" class="extra-btn" title="画中画（仅视频）" hidden>⧉ 画中画</button>
         </div>
 
+        <!-- 播放列表工具：搜索 + 排序 -->
+        <div class="playlist-tools">
+            <input id="searchInput" class="search-input" type="text" placeholder="🔍 搜索…" />
+            <select id="sortSelect" class="sort-select" title="排序">
+                <option value="default">默认</option>
+                <option value="name">名称</option>
+                <option value="type">类型</option>
+            </select>
+        </div>
+
+        <!-- 后台音频状态面板（走 offscreen 时显示） -->
+        <div id="bgStatus" class="bg-status" hidden>
+            <span class="bg-icon">🎧</span>
+            <span id="bgTitle" class="bg-title">—</span>
+            <button id="bgToggle" class="bg-toggle" title="播放/暂停">⏸</button>
+            <input id="bgSeek" class="bg-seek" type="range" min="0" max="100" value="0" />
+        </div>
+
         <div class="playlist-header">
             <h2>📋 播放列表</h2>
             <div class="file-count" id="fileCount">0 个文件</div>

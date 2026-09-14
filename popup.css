@@ -212,6 +212,63 @@ audio {
     border-color: #3f4b5e;
     color: #fff;
 }
+.playlist-tools {
+    display: flex;
+    gap: 8px;
+    margin: 0 4px 12px;
+}
+.search-input {
+    flex: 1;
+    background: #23232b;
+    border: 1px solid #34343c;
+    border-radius: 10px;
+    padding: 8px 12px;
+    color: #eaeef2;
+    font-size: 0.85rem;
+    outline: none;
+}
+.search-input::placeholder { color: #6c7a8a; }
+.sort-select {
+    background: #23232b;
+    border: 1px solid #34343c;
+    border-radius: 10px;
+    padding: 8px 10px;
+    color: #eaeef2;
+    font-size: 0.85rem;
+    outline: none;
+}
+.bg-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 4px 12px;
+    padding: 10px 14px;
+    background: #16161d;
+    border: 1px solid #2a2a34;
+    border-radius: 14px;
+}
+.bg-status[hidden] { display: none; }
+.bg-icon { font-size: 1.1rem; }
+.bg-title {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #cfdef5;
+    font-size: 0.9rem;
+}
+.bg-toggle {
+    background: #2e4b7c;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    flex: none;
+}
+.bg-seek { flex: 1.4; accent-color: #3d6ea8; min-width: 80px; }
 @media (max-width: 600px) {
     .player-container { padding: 16px; border-radius: 18px; }
     .playlist-item { padding: 10px 14px; font-size: 0.85rem; }

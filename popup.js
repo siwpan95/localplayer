@@ -9,6 +9,12 @@
     const currentMediaNameEl = document.getElementById('currentMediaName');
     const nowPlayingEl = document.getElementById('nowPlaying');
     const pipBtn = document.getElementById('pipBtn');
+    const bgStatus = document.getElementById('bgStatus');
+    const bgTitle = document.getElementById('bgTitle');
+    const bgToggle = document.getElementById('bgToggle');
+    const bgSeek = document.getElementById('bgSeek');
+    const searchInput = document.getElementById('searchInput');
+    const sortSelect = document.getElementById('sortSelect');
 
     // ---------- 状态 ----------
     let currentIndex = -1;
@@ -16,6 +22,10 @@
     let files = [];            // 媒体清单（由混合加载填充）
     let currentMediaEl = null; // 当前媒体元素（视频或音频）
     let currentFile = null;    // 当前播放的媒体项
+    let searchTerm = '';       // 搜索关键字
+    let sortMode = 'default';  // 排序方式
+    let usingOffscreenAudio = false; // 当前音频是否走 offscreen 后台播放
+    let bgState = { playing: false, currentTime: 0, duration: 0 }; // 后台音频状态
 
     // ---------- 本地打包媒体（随扩展分发，由 media/manifest.json 动态列出） ----------
     // 扩展运行时无法枚举自身包内目录，故由 gen_media_manifest.py 扫描 media/ 生成清单，
@@ -30,7 +40,8 @@
                     name: m.name,
                     type: m.type,
                     path: chrome.runtime.getURL('media/' + m.file),
-                    bundled: true
+                    bundled: true,
+                    tracks: Array.isArray(m.tracks) ? m.tracks : undefined
                 }));
             }
         } catch (e) {
@@ -57,7 +68,8 @@
                             name: f.name,
                             type: f.type,
                             path: f.path,
-                            remote: true
+                            remote: true,
+                            tracks: Array.isArray(f.tracks) ? f.tracks : undefined
                         })));
                     } else {
                         reject(new Error('后端清单为空或未配置'));
@@ -162,6 +174,19 @@
     // 给媒体元素挂载源：HLS 走 hls.js，普通格式直连；autoplay 控制是否立即播放
     function attachSource(el, file, autoplay) {
         destroyHls();
+        // 字幕（仅视频）：清空旧轨，按媒体项 tracks 追加 <track>
+        if (el.tagName === 'VIDEO' && Array.isArray(file.tracks) && file.tracks.length) {
+            while (el.firstChild) el.removeChild(el.firstChild);
+            file.tracks.forEach(t => {
+                const tr = document.createElement('track');
+                tr.kind = 'subtitles';
+                tr.src = t.src;
+                tr.srclang = t.srclang || 'zh';
+                tr.label = t.label || t.srclang || '字幕';
+                if (t.default) tr.default = true;
+                el.appendChild(tr);
+            });
+        }
         const doPlay = () => {
             if (autoplay) {
                 el.play().catch(err => console.warn('播放失败（可能需用户交互）:', err));
@@ -196,21 +221,34 @@
 
         currentMediaNameEl.textContent = file.name;
 
-        document.querySelectorAll('.playlist-item').forEach((el, i) => {
-            el.classList.toggle('active', i === index);
+        document.querySelectorAll('.playlist-item').forEach((el) => {
+            el.classList.toggle('active', Number(el.dataset.index) === index);
         });
 
-        let el;
+        // 音频：优先走 offscreen 后台续播；不可用时回退 popup 内播放
         if (file.type === 'audio') {
-            el = switchToAudioMode();
-            attachSource(el, file, true);
-            player.pause();
-        } else {
-            switchToVideoMode();
-            el = player;
-            attachSource(el, file, true);
+            currentFile = file;
+            playAudioViaOffscreen(file).then((off) => {
+                if (off) return; // 后台播放，UI 由状态面板驱动
+                stopOffscreenAudio();
+                usingOffscreenAudio = false;
+                hideBackgroundAudioStatus();
+                const audio = switchToAudioMode();
+                attachSource(audio, file, true);
+                player.pause();
+                currentMediaEl = audio;
+                updateMediaSession(file);
+            });
+            return;
         }
 
+        // 视频
+        stopOffscreenAudio();
+        usingOffscreenAudio = false;
+        hideBackgroundAudioStatus();
+        switchToVideoMode();
+        const el = player;
+        attachSource(el, file, true);
         currentMediaEl = el;
         currentFile = file;
         updateMediaSession(file);
@@ -221,6 +259,7 @@
     // ---------- 渲染播放列表 ----------
     function renderPlaylist() {
         playlistEl.innerHTML = '';
+        const items = getDisplayFiles();
 
         if (files.length === 0) {
             playlistEl.innerHTML = '<div class="empty-msg">📭 暂无媒体文件<br><span style="font-size:0.8rem;">请运行 gen_media_manifest.py 生成清单，或启动 Flask 后端</span></div>';
@@ -228,12 +267,18 @@
             return;
         }
 
-        fileCountEl.textContent = files.length + ' 个文件';
+        fileCountEl.textContent = items.length + ' / ' + files.length + ' 个文件';
 
-        files.forEach((file, index) => {
+        if (items.length === 0) {
+            playlistEl.innerHTML = '<div class="empty-msg">🔍 无匹配结果</div>';
+            return;
+        }
+
+        items.forEach(({ file, index }) => {
             const item = document.createElement('div');
             item.className = 'playlist-item';
             item.dataset.index = index;
+            if (index === currentIndex) item.classList.add('active');
 
             const icon = document.createElement('span');
             icon.className = 'icon';
@@ -335,9 +380,24 @@
     // ---------- 键盘快捷键 ----------
     function setupKeyboard() {
         document.addEventListener('keydown', (e) => {
-            if (!currentMediaEl) return;
+            if (!currentFile) return;
             const tag = (e.target && e.target.tagName) || '';
             if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+            // 后台音频：控制走 offscreen
+            if (currentFile.type === 'audio' && usingOffscreenAudio) {
+                switch (e.key) {
+                    case ' ':
+                    case 'k': e.preventDefault(); toggleBackgroundAudio(); break;
+                    case 'ArrowRight': e.preventDefault(); seekBackgroundAudio(5); break;
+                    case 'ArrowLeft': e.preventDefault(); seekBackgroundAudio(-5); break;
+                    case 'n': playByIndex(currentIndex + 1); break;
+                    case 'p': playByIndex(currentIndex - 1); break;
+                }
+                return;
+            }
+
+            if (!currentMediaEl) return;
             switch (e.key) {
                 case ' ':
                 case 'k':
@@ -391,28 +451,129 @@
         });
     }
 
+    // ---------- 播放列表过滤 / 排序 ----------
+    function getDisplayFiles() {
+        let arr = files.map((file, index) => ({ file, index }));
+        const q = searchTerm.trim().toLowerCase();
+        if (q) arr = arr.filter(o => o.file.name.toLowerCase().includes(q));
+        if (sortMode === 'name') arr.sort((a, b) => a.file.name.localeCompare(b.file.name, 'zh'));
+        else if (sortMode === 'type') arr.sort((a, b) => (a.file.type || '').localeCompare(b.file.type || ''));
+        return arr;
+    }
+
+    // ---------- 后台音频（offscreen） ----------
+    function hideLocalAudio() {
+        const a = document.getElementById('audioPlayer');
+        if (a) a.style.display = 'none';
+    }
+
+    function showBackgroundAudioStatus(file) {
+        if (bgStatus) { bgStatus.hidden = false; bgTitle.textContent = file.name; }
+    }
+    function hideBackgroundAudioStatus() {
+        if (bgStatus) bgStatus.hidden = true;
+    }
+
+    function updateBackgroundAudioStatus(state) {
+        bgState = state || bgState;
+        if (!bgStatus) return;
+        bgToggle.textContent = bgState.playing ? '⏸' : '▶';
+        const pct = bgState.duration ? (bgState.currentTime / bgState.duration) * 100 : 0;
+        bgSeek.value = String(Math.min(100, Math.max(0, pct)));
+    }
+
+    function toggleBackgroundAudio() {
+        chrome.runtime.sendMessage({ action: bgState.playing ? 'audioPause' : 'audioPlay' });
+    }
+    function seekBackgroundAudio(delta) {
+        const t = Math.min(bgState.duration || 0, Math.max(0, (bgState.currentTime || 0) + delta));
+        chrome.runtime.sendMessage({ action: 'audioSeek', time: t });
+    }
+
+    function stopOffscreenAudio() {
+        if (usingOffscreenAudio) {
+            chrome.runtime.sendMessage({ action: 'audioPause' });
+            usingOffscreenAudio = false;
+        }
+    }
+
+    async function playAudioViaOffscreen(file) {
+        let ok = false;
+        try { ok = await chrome.runtime.sendMessage({ action: 'ensureOffscreen' }); } catch (e) { ok = false; }
+        if (!ok) return false;
+        switchToAudioMode();
+        hideLocalAudio();
+        usingOffscreenAudio = true;
+        showBackgroundAudioStatus(file);
+        chrome.runtime.sendMessage({
+            action: 'audioLoad',
+            url: file.path,
+            meta: {
+                title: file.name,
+                artist: file.remote ? '远端源' : (file.bundled ? '本地打包' : '轻量播放器'),
+                album: '轻量播放器'
+            }
+        });
+        return true;
+    }
+
+    function setupBgControls() {
+        if (bgToggle) bgToggle.addEventListener('click', toggleBackgroundAudio);
+        if (bgSeek) bgSeek.addEventListener('input', () => {
+            if (bgState.duration) {
+                const t = (Number(bgSeek.value) / 100) * bgState.duration;
+                chrome.runtime.sendMessage({ action: 'audioSeek', time: t });
+            }
+        });
+    }
+
+    // 接收 offscreen 回报的状态 / 控制请求
+    chrome.runtime.onMessage.addListener((msg) => {
+        if (!msg || !msg.action) return;
+        if (msg.action === 'offscreenState') {
+            updateBackgroundAudioStatus(msg);
+        } else if (msg.action === 'offscreenEnded') {
+            if (usingOffscreenAudio) playByIndex(currentIndex + 1);
+        } else if (msg.action === 'offscreenNext') {
+            playByIndex(currentIndex + 1);
+        } else if (msg.action === 'offscreenPrev') {
+            playByIndex(currentIndex - 1);
+        }
+    });
+
     // ---------- 初始化 ----------
     async function init() {
         await loadProgress();
         setupMediaSession();
         setupKeyboard();
+        setupBgControls();
         files = await loadMedia();
+        currentIndex = 0;
         renderPlaylist();
         updatePipVisibility();
 
+        if (searchInput) searchInput.addEventListener('input', () => { searchTerm = searchInput.value; renderPlaylist(); });
+        if (sortSelect) sortSelect.addEventListener('change', () => { sortMode = sortSelect.value; renderPlaylist(); });
+
+        // 同步上一会话可能仍在后台播放的音频状态
+        try {
+            chrome.runtime.sendMessage({ action: 'getOffscreenState' }, (st) => { if (st) bgState = st; });
+        } catch (e) { /* ignore */ }
+
         if (files.length > 0) {
             currentMediaNameEl.textContent = files[0].name;
-            const firstItem = document.querySelector('.playlist-item[data-index="0"]');
-            if (firstItem) firstItem.classList.add('active');
-            currentIndex = 0;
-
             const firstFile = files[0];
+            currentFile = firstFile;
             if (firstFile.type === 'video') {
+                switchToVideoMode();
                 attachSource(player, firstFile, false);
+                currentMediaEl = player;
             } else {
                 const audio = switchToAudioMode();
                 attachSource(audio, firstFile, false);
+                currentMediaEl = audio;
             }
+            updateMediaSession(firstFile);
         }
     }
 

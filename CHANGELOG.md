@@ -3,6 +3,15 @@
 所有重要变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.2.6] - 2026-09-14
+
+### 新增
+- B 类播放交互增强（原生能力，无新依赖）：
+  - 后台音频续播：新增 offscreen.html / offscreen.js + manifest `offscreen` 权限，关闭 popup 后音乐继续；popup 显示后台状态面板，媒体键经 service worker 转发控制；不支持时回退 popup 内播放。
+  - 字幕 / 多语言：媒体项支持 `tracks`，视频渲染为多个 `<track>`（WebVTT），后端与本地清单均可透传。
+  - 搜索与排序：播放列表支持按名称搜索、按名称/类型排序。
+- popup.html / popup.css 增加搜索框、排序下拉与后台音频状态面板样式。
+
 ## [1.2.5] - 2026-09-14
 
 ### 新增
