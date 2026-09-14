@@ -32,6 +32,7 @@ MEDIA_TYPES = {
 
 # ---------- 信令中继：单一发送端 + 单一观看端 ----------
 _peers = {'sender': None, 'viewer': None}
+_last_meta = None  # 发送端最近一次投送的曲目元数据，供晚加入的观看端获取
 
 
 def _relay_to_other(role, msg):
@@ -39,6 +40,15 @@ def _relay_to_other(role, msg):
     if other is not None:
         try:
             other.send(json.dumps(msg))
+        except Exception:
+            pass
+
+
+def _notify_sender(msg):
+    s = _peers.get('sender')
+    if s is not None:
+        try:
+            s.send(json.dumps(msg))
         except Exception:
             pass
 
@@ -56,18 +66,34 @@ def ws_signaling(ws):
             if mtype == 'role':
                 role = msg.get('role')
                 _peers[role] = ws
+                if role == 'viewer':
+                    # 通知发送端：有 1 个接收端上线
+                    _notify_sender({'type': 'viewer-count', 'count': 1})
+                    # 把已缓存的曲目信息补发给晚加入的接收端
+                    if _last_meta is not None:
+                        try:
+                            ws.send(json.dumps(_last_meta))
+                        except Exception:
+                            pass
                 # 双方就位后，请发送端发起 offer
                 if _peers['sender'] is not None and _peers['viewer'] is not None:
-                    try:
-                        _peers['sender'].send(json.dumps({'type': 'offer-request'}))
-                    except Exception:
-                        pass
+                    _notify_sender({'type': 'offer-request'})
             else:
+                if mtype == 'meta':
+                    _last_meta = msg
                 _relay_to_other(role, msg)
     finally:
-        for k in ('sender', 'viewer'):
-            if _peers.get(k) is ws:
-                _peers[k] = None
+        if role is not None and _peers.get(role) is ws:
+            _peers[role] = None
+        if role == 'viewer':
+            _notify_sender({'type': 'viewer-count', 'count': 0})
+        elif role == 'sender':
+            v = _peers.get('viewer')
+            if v is not None:
+                try:
+                    v.send(json.dumps({'type': 'sender-gone'}))
+                except Exception:
+                    pass
 
 
 @app.route('/api/list')
@@ -112,6 +138,7 @@ REMOTE_HTML = """<!DOCTYPE html>
 </head>
 <body>
   <h1>🔊 网页投送（WebRTC）</h1>
+  <div id="title" style="font-size:.95rem;color:#cdd6e0;max-width:90vw;text-align:center"></div>
   <video id="rv" autoplay playsinline controls></video>
   <div id="status">正在连接信令…</div>
   <button id="reconnect">重新连接</button>
@@ -138,6 +165,12 @@ function connect() {
       statusEl.textContent = '接收中…';
     } else if (m.type === 'candidate') {
       try { await pc.addIceCandidate(m.candidate); } catch (e) {}
+    } else if (m.type === 'meta') {
+      const titleEl = document.getElementById('title');
+      const t = [m.title, m.artist].filter(Boolean).join(' — ');
+      titleEl.textContent = t || '';
+    } else if (m.type === 'sender-gone') {
+      statusEl.textContent = '发送端已断开';
     }
   };
   ws.onclose = () => { statusEl.textContent = '信令断开'; };

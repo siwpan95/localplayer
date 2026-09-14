@@ -16,6 +16,7 @@
     const searchInput = document.getElementById('searchInput');
     const sortSelect = document.getElementById('sortSelect');
     const castBtn = document.getElementById('castBtn');
+    const castStatus = document.getElementById('castStatus');
     let castOn = false;
 
     // ---------- 状态 ----------
@@ -558,6 +559,15 @@
         });
     }
 
+    function updateCastStatusUI(s) {
+        if (!castStatus) return;
+        if (!s || !s.active) { castStatus.textContent = ''; return; }
+        const n = s.viewers || 0;
+        castStatus.textContent = n > 0
+            ? ('📡 投送中 · ' + n + ' 个接收端')
+            : '📡 投送中（等待接收端连接）';
+    }
+
     function setupCast() {
         if (!castBtn) return;
         castBtn.addEventListener('click', async () => {
@@ -593,6 +603,7 @@
                 chrome.runtime.sendMessage({ action: 'castStop' });
                 if (currentMediaEl) currentMediaEl.muted = false;
                 castBtn.textContent = '🔊 网页投送';
+                if (castStatus) castStatus.textContent = '';
             }
         });
         // 后端不可达时置灰投送按钮 + hover 提示；每 5s 复查
@@ -619,6 +630,8 @@
             playByIndex(currentIndex + 1);
         } else if (msg.action === 'offscreenPrev') {
             playByIndex(currentIndex - 1);
+        } else if (msg.action === 'castStatus') {
+            updateCastStatusUI(msg);
         }
     });
 
