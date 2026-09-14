@@ -5,12 +5,17 @@ Thumbs.db
 .idea/
 .vscode/
 
-# 媒体与缓存（不随扩展提交）
-/media/
-*.mp4
-*.webm
-*.mp3
-*.ogg
+# 媒体二进制（保留 media/README.md，忽略具体媒体文件）
+/media/*.mp4
+/media/*.webm
+/media/*.mov
+/media/*.mkv
+/media/*.mp3
+/media/*.ogg
+/media/*.wav
+/media/*.m4a
+/media/*.aac
+/media/*.flac
 
 # Python
 __pycache__/

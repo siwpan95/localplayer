@@ -54,17 +54,21 @@ localplayer/
 3. `popup.js` 通过 `chrome.runtime.sendMessage` 取清单，再逐条播放。
    后端地址等可存于 `chrome.storage`。
 
-### 混合模式（A + B 同时实现）
+### 混合模式（A + B 已同时实现）
 
-**可以同时实现。** 两者并不冲突，只是「媒体清单与文件的来源」不同：
+两者并不冲突，已默认开启：
 
-- `web_accessible_resources` 解决「扩展内打包文件如何被 popup 访问」；
-- background service worker 解决「如何异步从远端后端拿清单」。
+- `web_accessible_resources`（`manifest.json`）解决「扩展内打包文件如何被 popup 访问」；
+- background service worker（`background.js`）解决「如何异步从远端后端拿清单」。
 
-实现策略：popup 启动时先问 background 拿远端清单；
-若拿到且非空 → 用后端模式（模式 B）；若 background 无响应 / 未配置后端
-→ 回退到扩展内打包的 `web_accessible_resources` 文件（模式 A）。
-最终 `files` 数组由「远端清单 ∪ 本地打包文件」合并而成，互不干扰。
+**实现（`popup.js` 的 `loadMedia()`）**：popup 启动先 `chrome.runtime.sendMessage({action:'getMediaList'})`
+向 `background.js` 取远端清单；`background.js` 用 `fetch` 调用后端 `/api/list`（地址来自
+`chrome.storage.sync.backendUrl`，默认 `http://127.0.0.1:5000`，可覆盖）。若远端返回非空 →
+用后端模式（B）；若拉取失败 / 后端未起 → 回退到 `LOCAL_MEDIA`（扩展内 `media/` 打包文件，A）。
+两种来源互不干扰，最终统一进 `files` 数组。
+
+**配套 Flask 后端**：`server.py` 提供 `GET /api/list`（返回 `{name,path,type}` 数组，
+`path` 为完整 URL）与 `GET /media/<file>`。运行见文件头注释。
 
 ## 许可
 
