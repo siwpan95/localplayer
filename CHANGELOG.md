@@ -3,6 +3,12 @@
 所有重要变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.2.4] - 2026-09-14
+
+### 新增
+- 最小自定义插件接口（plugins/plugin-api.js，约 40 行，无外部框架）：媒体源以插件注册，按优先级 fallback 链取数；内置「远端后端 / 本地打包」两个源，loadMedia 改为走插件收集。示例插件见 plugins/sample-source.js。
+- README 补充「插件式媒体源」用法与「Codis / Cordis 架构选型笔记」。
+
 ## [1.2.3] - 2026-09-14
 
 ### 新增

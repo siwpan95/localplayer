@@ -36,24 +36,48 @@
         return [];
     }
 
-    // ---------- 混合加载：远端清单优先，本地打包兜底 ----------
-    async function loadMedia() {
-        let remote = [];
-        try {
-            const resp = await chrome.runtime.sendMessage({ action: 'getMediaList' });
-            if (resp && resp.ok && Array.isArray(resp.files)) {
-                remote = resp.files.map(f => ({
-                    name: f.name,
-                    type: f.type,
-                    path: f.path,
-                    remote: true
-                }));
-            }
-        } catch (e) {
-            console.warn('获取远端清单失败，回退到本地打包媒体:', e);
+    // ---------- 插件式媒体源（最小化，无外部框架） ----------
+    // 接口见 plugins/plugin-api.js：每个「媒体源插件」形如
+    //   { id, name, priority?, getMedia(): Promise<Array<{name,path,type}>> }
+    // 核心按优先级取第一个返回非空列表的插件（fallback 链）。
+    // 内置两个源：远端后端（高优先级）/ 本地打包（兜底）。
+    LocalPlayer.plugins.register({
+        id: 'backend',
+        name: '远端后端',
+        priority: 10,
+        getMedia() {
+            return new Promise((resolve, reject) => {
+                chrome.runtime.sendMessage({ action: 'getMediaList' }, resp => {
+                    if (chrome.runtime.lastError) return reject(chrome.runtime.lastError);
+                    if (resp && resp.ok && Array.isArray(resp.files) && resp.files.length) {
+                        resolve(resp.files.map(f => ({
+                            name: f.name,
+                            type: f.type,
+                            path: f.path,
+                            remote: true
+                        })));
+                    } else {
+                        reject(new Error('后端清单为空或未配置'));
+                    }
+                });
+            });
         }
-        // 远端有内容用远端；否则读取随扩展打包的 media/manifest.json
-        return remote.length ? remote : await loadBundledMedia();
+    });
+
+    LocalPlayer.plugins.register({
+        id: 'local',
+        name: '本地打包',
+        priority: 0,
+        async getMedia() {
+            const list = await loadBundledMedia();
+            if (list.length) return list;
+            throw new Error('本地清单为空，请先运行 gen_media_manifest.py');
+        }
+    });
+
+    // ---------- 混合加载：按插件优先级取第一个非空清单 ----------
+    function loadMedia() {
+        return LocalPlayer.plugins.collectMedia();
     }
 
     // ---------- 工具函数 ----------

@@ -35,6 +35,8 @@
 
     <!-- hls.js 本地打包（MV3 禁止运行时加载远程脚本），用于播放 .m3u8 -->
     <script src="lib/hls.min.js"></script>
+    <!-- 最小插件接口（媒体源插件注册表），须先于 popup.js 加载 -->
+    <script src="plugins/plugin-api.js"></script>
     <script src="popup.js"></script>
 </body>
 </html>

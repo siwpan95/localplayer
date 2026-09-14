@@ -14,6 +14,9 @@ localplayer/
 ├── popup.css         # 弹窗样式
 ├── popup.js          # 播放逻辑（混合加载：远端优先 + 本地打包兜底）
 ├── lib/hls.min.js     # 本地打包的 hls.js（Apache-2.0），用于播放 .m3u8
+├── plugins/           # 最小自定义插件接口（插件式媒体源）
+│   ├── plugin-api.js  # LocalPlayer.plugins 注册表 + collectMedia（fallback 链）
+│   └── sample-source.js  # 示例插件模板（默认不加载，按注释启用）
 ├── options.html      # 选项页结构
 ├── options.css       # 选项页样式
 ├── options.js        # 选项页逻辑（读写后端地址到 chrome.storage.sync）
@@ -99,6 +102,37 @@ localplayer/
 `popup.js` 检测到 `.m3u8` 源时自动用 hls.js 接管播放（Safari / iOS 走原生 HLS）。
 
 > 注意：`.ts` 分片由 `.m3u8` 引用，无需（也不应）单独列出，生成清单时已被 `gen_media_manifest.py` 跳过。
+
+## 插件式媒体源（最小自定义接口）
+
+本项目不引入任何插件框架（如 Cordis），而是用约 40 行代码提供**最小自定义插件接口**，满足「可插拔媒体源」诉求。一个媒体源插件就是一个对象，向 `LocalPlayer.plugins` 注册即可：
+
+```js
+LocalPlayer.plugins.register({
+  id: 'my-source',                 // 唯一
+  name: '我的媒体源',
+  priority: 5,                     // 越大越优先（后端=10，本地打包=0）
+  async getMedia() {               // 返回 {name,path,type}[]；失败时抛错以便 fallback
+    return [/* ... */];
+  }
+});
+```
+
+- 注册表与取数逻辑见 [`plugins/plugin-api.js`](plugins/plugin-api.js)。
+- 内置两个源：**远端后端**（priority 10，走 background 拉 `/api/list`）与**本地打包**（priority 0，读 `media/manifest.json`）。
+- `loadMedia()` 调用 `LocalPlayer.plugins.collectMedia()`，按优先级取**第一个返回非空列表**的插件（fallback 链）。
+- 示例插件（从 `chrome.storage.sync` 读自定义列表）见 [`plugins/sample-source.js`](plugins/sample-source.js)；默认不加载，按其文件头注释在 `popup.html` 加入对应 `<script>` 即可启用。
+
+## 架构选型笔记：Codis / Cordis 对本项目有帮助吗？
+
+结论：**两者现阶段都不相关，引入属过度设计。**
+
+- **Codis**：基于代理的 Redis 分布式集群方案，解决单机 Redis 的容量 / 高可用 / 水平扩容，是后端基础设施。本项目是纯前端、单机、无后端、无共享状态的 MV3 浏览器扩展，既不存数据也不服务多用户，没有需要 Codis 兜底的 Redis。
+- **Cordis**：Koishi 的可逆插件系统元框架（插件可加载 / 卸载 / 销毁），是 Node/TS 服务端框架；而扩展是浏览器 JS，MV3 本身已有轻量能力组合方式（background / content script / message passing / options_page），当前规模远不需要一个完整插件市场。
+
+### 什么时候才值得考虑
+- **Codis**：仅当项目演进为「带后端的多人云媒体服务」、需要缓存与水平扩容时才有意义。
+- **Cordis**：仅当真正需要插件生态时。即便如此，本项目采用上面的**最小自定义插件接口**即可满足，远比引入 Cordis 整个体系轻量。
 
 ## 许可
 
