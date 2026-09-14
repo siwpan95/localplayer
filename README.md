@@ -15,7 +15,6 @@ localplayer/
 ├── app-layout.css    # 各播放器界面（popup / 侧栏 / 全页）共用的布局样式
 ├── popup.js          # 播放逻辑（混合加载：远端优先 + 本地打包兜底）
 ├── player.html       # 独立全页播放器（复用 popup 播放逻辑，对应「独立插件应用」）
-├── sidepanel.html    # 侧边栏播放器（窗口锚定，切标签不关）
 ├── lib/hls.min.js     # 本地打包的 hls.js（Apache-2.0），用于播放 .m3u8
 ├── plugins/           # 最小自定义插件接口（插件式媒体源）
 │   ├── plugin-api.js  # LocalPlayer.plugins 注册表 + collectMedia（fallback 链）
@@ -43,7 +42,7 @@ localplayer/
 
 v1.3.x 完成了「常驻界面 + 网页投送」两大能力升级（完整记录见 [CHANGELOG.md](CHANGELOG.md)）：
 
-- **v1.3.0 常驻界面 + 网页投送**：新增侧边栏播放器（`sidePanel`）与独立全页播放器（`player.html`），修复「切标签页 popup 自行回退」；新增 WebRTC「网页投送」，可将当前播放投送到外部网页观看。
+- **v1.3.0 常驻界面 + 网页投送**：新增独立全页播放器（`player.html`），修复「切标签页 popup 自行回退」；新增 WebRTC「网页投送」，可将当前播放投送到外部网页观看。
 - **v1.3.1 投送健壮性**：WebRTC 信令「直连优先 + background 中转兜底」；开启投送前做后端可达性校验，不可达时按钮置灰并提示先启动 `server.py`；版本号补登为 1.3.1。
 - **v1.3.2 投送可用性 + 静默降级**：接收端 `/remote` 页显示曲目信息与连接状态，发送端显示「投送中 · N 个接收端」；媒体源在后端未启动时静默回落本地源，不再刷 `console.warn`。
 
