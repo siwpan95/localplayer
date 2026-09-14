@@ -9,10 +9,13 @@ Chrome 与 Edge 使用同一套 MV3 规范，本扩展在两者上通用，无�
 
 ```
 localplayer/
-├── manifest.json     # MV3 扩展清单（popup + options_page + background + web_accessible_resources）
+├── manifest.json     # MV3 扩展清单（popup + options_page + side_panel + background + offscreen + web_accessible_resources）
 ├── popup.html        # 弹窗页面结构
 ├── popup.css         # 弹窗样式
+├── app-layout.css    # 各播放器界面（popup / 侧栏 / 全页）共用的布局样式
 ├── popup.js          # 播放逻辑（混合加载：远端优先 + 本地打包兜底）
+├── player.html       # 独立全页播放器（复用 popup 播放逻辑，对应「独立插件应用」）
+├── sidepanel.html    # 侧边栏播放器（窗口锚定，切标签不关）
 ├── lib/hls.min.js     # 本地打包的 hls.js（Apache-2.0），用于播放 .m3u8
 ├── plugins/           # 最小自定义插件接口（插件式媒体源）
 │   ├── plugin-api.js  # LocalPlayer.plugins 注册表 + collectMedia（fallback 链）
@@ -20,13 +23,16 @@ localplayer/
 ├── options.html      # 选项页结构
 ├── options.css       # 选项页样式
 ├── options.js        # 选项页逻辑（读写后端地址到 chrome.storage.sync）
-├── background.js     # MV3 service worker（拉取后端 /api/list 清单）
-├── server.py         # 可选 Flask 后端（/api/list + /media/<file>）
+├── background.js     # MV3 service worker（拉取后端 /api/list 清单 + 信令中转 + offscreen 管理）
+├── offscreen.html    # 后台音频 / WebRTC 主运行时文档
+├── offscreen.js      # 后台音频续播 + 网页投送（WebRTC 串流当前媒体）
+├── server.py         # 可选 Flask 后端（/api/list + /media/<file> + /ws 信令 + /remote 观看页）
 ├── gen_media_manifest.py       # 扫描 media/ 生成本地媒体清单 media/manifest.json
 ├── gen_media_manifest.bat      # 同上（Windows 双击运行）
 ├── media/            # 随扩展打包的媒体（含 README 说明与 manifest.json 清单）
 ├── requirements.txt  # 可选 Flask 后端依赖
 ├── CHANGELOG.md      # 版本变更记录
+├── docs/             # 文档（分支模型 branching.md、发版说明 RELEASE-*.md 等）
 ├── LICENSE           # MIT
 └── README.md
 ```
