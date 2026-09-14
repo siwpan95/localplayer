@@ -122,6 +122,16 @@ def remote_viewer():
     return REMOTE_HTML
 
 
+@app.route('/')
+def index():
+    return INDEX_HTML
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return '', 204
+
+
 REMOTE_HTML = """<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -181,6 +191,23 @@ connect();
 </script>
 </body>
 </html>"""
+
+
+INDEX_HTML = """<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>轻量播放器 · 本地后端</title>
+<style>body{font-family:system-ui,-apple-system,sans-serif;background:#0f0f12;color:#eaeef2;margin:2rem;line-height:1.7}
+h1{font-size:1.2rem;font-weight:500}a{color:#7aa2f7}code{background:#1c1c22;padding:2px 6px;border-radius:4px}</style>
+</head>
+<body>
+<h1>轻量播放器 · 本地后端</h1>
+<p>这是扩展「模式 B」的可选 Flask 后端，提供媒体清单与网页投送信令。</p>
+<ul>
+  <li><a href="/api/list">/api/list</a> — 媒体清单 JSON（供扩展「远端后端」源拉取）</li>
+  <li><a href="/remote">/remote</a> — 网页投送观看页（接收端）</li>
+  <li>WebSocket <code>/ws</code> — WebRTC 信令中继</li>
+</ul>
+</body></html>"""
 
 
 if __name__ == '__main__':

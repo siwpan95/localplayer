@@ -5,6 +5,12 @@
 
 > **提交前自检**：运行 `python check_version.py` 校验 `manifest.json` 的 `version` 与本文档最新 `## [x.y.z]` 一致（已配 git pre-commit 钩子，不一致将阻止提交）。
 
+## [1.3.4] - 2026-09-14
+
+### 修复
+- **网页投送状态滞后**：后端 `server.py` 停止后，信令 WebSocket 断开但 popup 仍显示「投送中」。现 offscreen 在直连 `onclose` 与 background 中转 `onclose` 时检测并清理投送状态，popup 同步复位开关与按钮，不再需要手动关停。
+- **后端根路径 404**：`server.py` 新增 `/` 落地页（列出 `/api/list`、`/remote`、`/ws` 用途）与 `/favicon.ico`（返回 204），消除浏览器打开根地址与 favicon 请求的 404 噪音。
+
 ## [1.3.3] - 2026-09-14
 
 ### 修复 / 变更

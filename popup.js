@@ -633,6 +633,14 @@
             playByIndex(currentIndex - 1);
         } else if (msg.action === 'castStatus') {
             updateCastStatusUI(msg);
+            // 信令意外断开（如后端关闭）导致投送退出：同步复位本地开关与按钮，避免滞后
+            if (msg && !msg.active && castOn) {
+                castOn = false;
+                castStatus.textContent = '';
+                castBtn.textContent = '🔊 网页投送';
+                if (currentMediaEl) currentMediaEl.muted = false;
+                updateCastAvailability();
+            }
         }
     });
 
