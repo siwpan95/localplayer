@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "轻量播放器 · 本地媒体",
+  "version": "1.0.0",
+  "description": "Chrome / Edge 通用插件：本地媒体播放器与播放列表。",
+  "action": {
+    "default_title": "轻量播放器",
+    "default_popup": "popup.html"
+  },
+  "permissions": []
+}

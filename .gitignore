@@ -1,0 +1,19 @@
+# 系统 / 编辑器
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# 媒体与缓存（不随扩展提交）
+/media/
+*.mp4
+*.webm
+*.mp3
+*.ogg
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/

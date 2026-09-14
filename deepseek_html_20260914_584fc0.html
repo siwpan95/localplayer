@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轻量播放器 · 本地媒体</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #0f0f12;
+            color: #eaeef2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+        .player-container {
+            max-width: 960px;
+            width: 100%;
+            background: #1c1c22;
+            border-radius: 24px;
+            padding: 24px 24px 28px;
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.8);
+            border: 1px solid #2c2c34;
+            transition: all 0.15s ease;
+        }
+        h1 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            color: #b9c4d0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            padding-left: 4px;
+        }
+        h1 span {
+            background: #2e4b7c;
+            color: #aac9ff;
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 4px 10px;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+        }
+        .media-wrapper {
+            background: #000;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: inset 0 0 0 1px #34343c;
+            margin-bottom: 22px;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        video, audio {
+            width: 100%;
+            height: 100%;
+            display: block;
+            background: #000;
+            outline: none;
+        }
+        audio {
+            height: 54px;
+            width: 100%;
+            margin: 20px 0;
+        }
+        .playlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 0 6px;
+        }
+        .playlist-header h2 {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #9aa6b5;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .file-count {
+            font-size: 0.8rem;
+            background: #2a2a32;
+            padding: 4px 12px;
+            border-radius: 30px;
+            color: #b0bed0;
+        }
+        .playlist {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            max-height: 240px;
+            overflow-y: auto;
+            padding-right: 4px;
+            scrollbar-width: thin;
+            scrollbar-color: #3e3e4a #1c1c22;
+        }
+        .playlist::-webkit-scrollbar {
+            width: 6px;
+        }
+        .playlist::-webkit-scrollbar-track {
+            background: #1c1c22;
+            border-radius: 10px;
+        }
+        .playlist::-webkit-scrollbar-thumb {
+            background: #3e3e4a;
+            border-radius: 10px;
+        }
+        .playlist-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: #23232b;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: all 0.12s ease;
+            border: 1px solid transparent;
+            font-size: 0.95rem;
+            color: #d4dee8;
+            user-select: none;
+        }
+        .playlist-item:hover {
+            background: #2d2d38;
+            border-color: #3f4b5e;
+        }
+        .playlist-item.active {
+            background: #1e3a5f;
+            border-color: #3d6ea8;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(61, 110, 168, 0.25);
+        }
+        .playlist-item .icon {
+            font-size: 1.2rem;
+            opacity: 0.75;
+            width: 24px;
+            text-align: center;
+        }
+        .playlist-item .name {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .playlist-item .type-badge {
+            font-size: 0.65rem;
+            background: #35353f;
+            padding: 3px 9px;
+            border-radius: 30px;
+            color: #98a9bd;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-weight: 500;
+        }
+        .playlist-item.active .type-badge {
+            background: #2e5590;
+            color: #cfdeff;
+        }
+        .empty-msg {
+            text-align: center;
+            padding: 40px 20px;
+            color: #6c7a8a;
+            font-size: 0.95rem;
+            background: #1b1b22;
+            border-radius: 18px;
+            border: 1px dashed #34343c;
+        }
+        .now-playing {
+            margin-top: 18px;
+            padding: 12px 18px;
+            background: #16161d;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: #b0c0d0;
+            border: 1px solid #2a2a34;
+            word-break: break-all;
+        }
+        .now-playing .label {
+            color: #6f7f92;
+            font-weight: 400;
+            white-space: nowrap;
+        }
+        .now-playing .value {
+            color: #cfdef5;
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        @media (max-width: 600px) {
+            .player-container { padding: 16px; border-radius: 18px; }
+            .playlist-item { padding: 10px 14px; font-size: 0.85rem; }
+            .media-wrapper { border-radius: 14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <h1>
+            🎬 轻量播放器
+            <span>本地媒体</span>
+        </h1>
+
+        <!-- 媒体容器：视频或音频由 JS 动态切换显示 -->
+        <div class="media-wrapper" id="mediaWrapper">
+            <video id="player" controls preload="metadata" playsinline></video>
+        </div>
+
+        <div class="playlist-header">
+            <h2>📋 播放列表</h2>
+            <div class="file-count" id="fileCount">0 个文件</div>
+        </div>
+
+        <div class="playlist" id="playlist">
+            <!-- 播放列表由 JavaScript 动态渲染 -->
+        </div>
+
+        <div class="now-playing" id="nowPlaying">
+            <span class="label">🎵 当前播放：</span>
+            <span class="value" id="currentMediaName">—</span>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // ---------- 配置：媒体文件列表 ----------
+            // 注意：如果通过 Flask 后端访问，请保留 /media/ 前缀。
+            // 直接以 file:// 打开时，请将文件放在同目录下并去掉 /media/ 前缀。
+            const USE_FLASK_BACKEND = true;  // 设为 false 可本地直接播放同目录文件
+
+            // 示例媒体清单（实际项目中可由后端 API 动态提供）
+            const mediaFiles = [
+                { name: '示例视频 1.mp4',  path: '/media/sample1.mp4',  type: 'video' },
+                { name: '示例视频 2.webm', path: '/media/sample2.webm', type: 'video' },
+                { name: '示例音频 1.mp3',  path: '/media/sample_audio1.mp3', type: 'audio' },
+                { name: '示例音频 2.ogg',  path: '/media/sample_audio2.ogg', type: 'audio' }
+            ];
+
+            // 如果关闭后端模式，去掉路径中的 /media/ 前缀
+            const files = USE_FLASK_BACKEND
+                ? mediaFiles
+                : mediaFiles.map(f => ({ ...f, path: f.path.replace(/^\/media\//, '') }));
+
+            // ---------- DOM 引用 ----------
+            const player = document.getElementById('player');
+            const mediaWrapper = document.getElementById('mediaWrapper');
+            const playlistEl = document.getElementById('playlist');
+            const fileCountEl = document.getElementById('fileCount');
+            const currentMediaNameEl = document.getElementById('currentMediaName');
+            const nowPlayingEl = document.getElementById('nowPlaying');
+
+            // ---------- 状态 ----------
+            let currentIndex = -1;
+            let isAudioMode = false;   // 当前是否为音频模式
+
+            // ---------- 工具函数 ----------
+            function getIconForType(type) {
+                return type === 'audio' ? '🎧' : '🎬';
+            }
+
+            function formatBadge(type) {
+                return type === 'audio' ? 'AUDIO' : 'VIDEO';
+            }
+
+            // ---------- 切换到音频模式 ----------
+            function switchToAudioMode() {
+                if (isAudioMode) return;
+                isAudioMode = true;
+
+                // 隐藏视频元素，创建音频元素
+                player.style.display = 'none';
+
+                // 移除旧的 audio（如果有）
+                const oldAudio = document.getElementById('audioPlayer');
+                if (oldAudio) oldAudio.remove();
+
+                const audio = document.createElement('audio');
+                audio.id = 'audioPlayer';
+                audio.controls = true;
+                audio.preload = 'metadata';
+                // 音频模式下容器高度自适应
+                mediaWrapper.style.aspectRatio = 'auto';
+                mediaWrapper.style.padding = '12px 0';
+                mediaWrapper.appendChild(audio);
+
+                // 将事件绑定迁移到 audio（简单做法：播放逻辑通过统一入口控制，不依赖元素事件）
+                // 这里我们不在 audio 上绑定 ended，而是在播放逻辑中统一处理。
+                // 但为了自动下一曲，需监听 audio 的 ended 事件：
+                audio.addEventListener('ended', handleEnded);
+
+                return audio;
+            }
+
+            // ---------- 切换回视频模式 ----------
+            function switchToVideoMode() {
+                if (!isAudioMode) return;
+                isAudioMode = false;
+
+                const audio = document.getElementById('audioPlayer');
+                if (audio) {
+                    audio.pause();
+                    audio.removeEventListener('ended', handleEnded);
+                    audio.remove();
+                }
+
+                player.style.display = 'block';
+                mediaWrapper.style.aspectRatio = '16 / 9';
+                mediaWrapper.style.padding = '0';
+            }
+
+            // ---------- 播放结束处理 ----------
+            function handleEnded() {
+                if (currentIndex >= 0 && currentIndex + 1 < files.length) {
+                    playByIndex(currentIndex + 1);
+                }
+            }
+
+            // ---------- 核心播放函数 ----------
+            function playByIndex(index) {
+                if (index < 0 || index >= files.length) return;
+                currentIndex = index;
+                const file = files[index];
+
+                // 更新当前播放名称
+                currentMediaNameEl.textContent = file.name;
+
+                // 更新高亮状态
+                document.querySelectorAll('.playlist-item').forEach((el, i) => {
+                    el.classList.toggle('active', i === index);
+                });
+
+                // 根据类型切换播放器
+                if (file.type === 'audio') {
+                    const audio = switchToAudioMode();
+                    audio.src = file.path;
+                    audio.load();
+                    audio.play().catch(err => {
+                        console.warn('音频播放失败（可能需用户交互）:', err);
+                    });
+                    // 确保视频元素停止
+                    player.pause();
+                } else {
+                    switchToVideoMode();
+                    player.src = file.path;
+                    player.load();
+                    player.play().catch(err => {
+                        console.warn('视频播放失败（可能需用户交互）:', err);
+                    });
+                    // 确保音频元素停止（switchToVideoMode 已处理）
+                }
+            }
+
+            // ---------- 渲染播放列表 ----------
+            function renderPlaylist() {
+                playlistEl.innerHTML = '';
+
+                if (files.length === 0) {
+                    playlistEl.innerHTML = '<div class="empty-msg">📭 暂无媒体文件<br><span style="font-size:0.8rem;">请将视频/音频放入 media 目录</span></div>';
+                    fileCountEl.textContent = '0 个文件';
+                    return;
+                }
+
+                fileCountEl.textContent = files.length + ' 个文件';
+
+                files.forEach((file, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'playlist-item';
+                    item.dataset.index = index;
+
+                    const icon = document.createElement('span');
+                    icon.className = 'icon';
+                    icon.textContent = getIconForType(file.type);
+
+                    const name = document.createElement('span');
+                    name.className = 'name';
+                    name.textContent = file.name;
+
+                    const badge = document.createElement('span');
+                    badge.className = 'type-badge';
+                    badge.textContent = formatBadge(file.type);
+
+                    item.appendChild(icon);
+                    item.appendChild(name);
+                    item.appendChild(badge);
+
+                    item.addEventListener('click', () => {
+                        playByIndex(index);
+                    });
+
+                    playlistEl.appendChild(item);
+                });
+            }
+
+            // ---------- 视频元素自带 ended 事件（用于视频模式自动下一曲） ----------
+            player.addEventListener('ended', handleEnded);
+
+            // ---------- 初始化：尝试自动播放第一个文件 ----------
+            function init() {
+                renderPlaylist();
+
+                if (files.length > 0) {
+                    // 预加载第一个文件的信息但不自动播放（浏览器策略限制）
+                    currentMediaNameEl.textContent = files[0].name;
+                    // 设置第一个为高亮
+                    const firstItem = document.querySelector('.playlist-item[data-index="0"]');
+                    if (firstItem) firstItem.classList.add('active');
+                    currentIndex = 0;
+
+                    // 设置视频源（不自动播放，等待用户点击）
+                    const firstFile = files[0];
+                    if (firstFile.type === 'video') {
+                        player.src = firstFile.path;
+                        player.load();
+                    } else {
+                        // 如果是音频，预创建音频元素但不播放
+                        const audio = switchToAudioMode();
+                        audio.src = firstFile.path;
+                        audio.load();
+                    }
+                }
+            }
+
+            // 启动
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+</body>
+</html>

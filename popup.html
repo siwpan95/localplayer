@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轻量播放器 · 本地媒体</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="player-container">
+        <h1>
+            🎬 轻量播放器
+            <span>本地媒体</span>
+        </h1>
+
+        <!-- 媒体容器：视频或音频由 JS 动态切换显示 -->
+        <div class="media-wrapper" id="mediaWrapper">
+            <video id="player" controls preload="metadata" playsinline></video>
+        </div>
+
+        <div class="playlist-header">
+            <h2>📋 播放列表</h2>
+            <div class="file-count" id="fileCount">0 个文件</div>
+        </div>
+
+        <div class="playlist" id="playlist">
+            <!-- 播放列表由 JavaScript 动态渲染 -->
+        </div>
+
+        <div class="now-playing" id="nowPlaying">
+            <span class="label">🎵 当前播放：</span>
+            <span class="value" id="currentMediaName">—</span>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
