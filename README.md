@@ -20,6 +20,7 @@ localplayer/
 ├── server.py         # 可选 Flask 后端（/api/list + /media/<file>）
 ├── media/            # 随扩展打包的媒体（含 README 说明）
 ├── requirements.txt  # 可选 Flask 后端依赖
+├── CHANGELOG.md      # 版本变更记录
 ├── LICENSE           # MIT
 └── README.md
 ```
