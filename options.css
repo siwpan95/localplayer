@@ -118,3 +118,8 @@ button.ghost:hover {
     color: #f0a3a3;
     border: 1px solid #6c2e2e;
 }
+.status.info {
+    background: #16263a;
+    color: #aac9ff;
+    border: 1px solid #2e4b7c;
+}
