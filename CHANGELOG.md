@@ -5,6 +5,12 @@
 
 > **提交前自检**：运行 `python check_version.py` 校验 `manifest.json` 的 `version` 与本文档最新 `## [x.y.z]` 一致（已配 git pre-commit 钩子，不一致将阻止提交）。
 
+## [1.3.3] - 2026-09-14
+
+### 修复 / 变更
+- **修复 `server.py` 启动崩溃**：`requirements.txt` 显式约束 `Werkzeug>=3.1`。此前仅约束 `Flask>=3.0`，在 Werkzeug 过旧（如 0.16.0）的环境中 Flask 3.x 用到 `LocalProxy(unbound_message=...)` 会直接崩溃；重装依赖（`pip install -r requirements.txt`）即可启动。
+- **移除侧边栏播放器**：实测 Chrome / Edge 下侧边栏均无法打开，且「独立全页播放器」（`player.html`）已满足常驻界面需求，故移除 `side_panel` 声明、`background.js` 的「打开侧边栏播放器」右键菜单，并删除 `sidepanel.html`。
+
 ## [1.3.2] - 2026-09-14
 
 ### 改进（投送可用性补全）
