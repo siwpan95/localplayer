@@ -5,17 +5,9 @@ Thumbs.db
 .idea/
 .vscode/
 
-# 媒体二进制（保留 media/README.md，忽略具体媒体文件）
-/media/*.mp4
-/media/*.webm
-/media/*.mov
-/media/*.mkv
-/media/*.mp3
-/media/*.ogg
-/media/*.wav
-/media/*.m4a
-/media/*.aac
-/media/*.flac
+# 媒体文件（用户自有内容，非项目源码，不纳入版本库；仅保留说明文档 media/README.md）
+/media/*
+!/media/README.md
 
 # Python
 __pycache__/
