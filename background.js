@@ -145,15 +145,10 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 function setupContextMenus() {
   if (!chrome.contextMenus) return;
   chrome.contextMenus.removeAll(() => {
-    chrome.contextMenus.create({ id: 'open_sidepanel', title: '打开侧边栏播放器', contexts: ['action'] });
     chrome.contextMenus.create({ id: 'open_player', title: '打开独立播放器页面', contexts: ['action'] });
   });
   chrome.contextMenus.onClicked.addListener((info) => {
-    if (info.menuItemId === 'open_sidepanel') {
-      if (chrome.sidePanel && info.windowId != null) {
-        chrome.sidePanel.open({ windowId: info.windowId }).catch(() => {});
-      }
-    } else if (info.menuItemId === 'open_player') {
+    if (info.menuItemId === 'open_player') {
       chrome.tabs.create({ url: chrome.runtime.getURL('player.html') }).catch(() => {});
     }
   });
