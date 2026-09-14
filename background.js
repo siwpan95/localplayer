@@ -77,7 +77,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       ensureOffscreen().then(sendResponse);
       return true;
     case 'audioLoad':
-      ensureOffscreen().then((ok) => { if (ok) sendToOffscreen('load', { url: msg.url, meta: msg.meta }); });
+      ensureOffscreen().then((ok) => { if (ok) sendToOffscreen('load', { url: msg.url, meta: msg.meta, startTime: msg.startTime }); });
       return false; // 无需回复调用方，offscreen 会直接回报状态
     case 'audioPlay':
       sendToOffscreen('play');

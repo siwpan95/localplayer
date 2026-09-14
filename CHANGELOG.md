@@ -3,6 +3,12 @@
 所有重要变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.2.7] - 2026-09-14
+
+### 新增 / 完善
+- 完善后台音频进度落盘：offscreen 直接将播放进度写入 `chrome.storage.local` 的 `lp_progress`（与 popup 内播放共用同一缓存键），重开扩展后再次播放同一文件自动恢复；续播时回传已记忆进度；重开 popup 若后台仍在播则接管状态而非重复加载本地媒体。
+- README 新增「播放交互增强（C 类）」章节（投屏 / Chromecast 评估为暂不实现），并将 B 类「已知限制」更新为进度已落盘。
+
 ## [1.2.6] - 2026-09-14
 
 ### 新增

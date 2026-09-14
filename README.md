@@ -141,9 +141,16 @@ LocalPlayer.plugins.register({
 在 A 类基础上，用原生能力做的进阶增强（均不引入新依赖）：
 
 - **后台音频续播（offscreen）**：新增 `offscreen.html` / `offscreen.js`，通过 `chrome.offscreen`（manifest 需 `offscreen` 权限）承载 `<audio>`。点击音频后，声音改由 offscreen 文档播放，**关闭 popup 后音乐继续**；popup 内显示后台状态面板（标题 / 播放暂停 / 进度条），键盘与锁屏媒体键经 service worker 转发到 offscreen 控制。浏览器不支持 offscreen 时自动回退为 popup 内播放。
-  - 已知限制：后台音频的**进度记忆**暂未落盘（仅 popup 内播放的音频会记忆）；单集播完若 popup 已关闭则不会自动续播下一集。
+  - 进度落盘：后台音频的播放进度由 offscreen 直接写入 `chrome.storage.local` 的 `lp_progress`（与 popup 内播放共用同一缓存键），重开扩展后再次播放同一文件会自动恢复到上次位置；offscreen 单曲播完若 popup 已关闭则不会自动续播下一集。
 - **字幕 / 多语言**：媒体项可携带 `tracks`（如 `[{src, srclang, label, default}]`），`attachSource` 在视频元素上渲染为多个 `<track>`（WebVTT）。媒体源插件 / 后端 `/api/list` 返回 `tracks` 即生效。
 - **搜索与排序**：播放列表上方提供搜索框（按名称过滤）与排序下拉（默认 / 名称 / 类型），实时过滤与重排。
+
+## 播放交互增强（C 类）
+
+**投屏 / Chromecast（暂不实现，标记为 future / stretch）**：技术上可通过 Google Cast SDK 将本地媒体投到电视；但 MV3 扩展内集成 sender 需注入脚本并对 receiver 应用做白名单，集成成本较高。本项目是本地单用户播放器，投屏属于低频诉求，且引入 Cast SDK 与 README「不过度设计」原则冲突，故**当前不值得**。
+
+### 什么时候才值得考虑
+- 当用户确有「把本地媒体投到 Chromecast / 智能电视」的真实诉求时，再评估；届时可作为新的媒体输出插件（复用最小插件接口），而非修改播放核心。
 
 > 验证门槛：扩展类改动无法在命令行跑测试；加载到 `chrome://extensions` 开发者模式手动验证；`node --check` 仅校验纯 JS 语法。
 

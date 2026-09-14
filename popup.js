@@ -476,6 +476,9 @@
 
     function updateBackgroundAudioStatus(state) {
         bgState = state || bgState;
+        if (state && state.url && typeof state.currentTime === 'number') {
+            progressCache[state.url] = state.currentTime; // 保持 popup 进度缓存与后台一致
+        }
         if (!bgStatus) return;
         bgToggle.textContent = bgState.playing ? '⏸' : '▶';
         const pct = bgState.duration ? (bgState.currentTime / bgState.duration) * 100 : 0;
@@ -508,6 +511,7 @@
         chrome.runtime.sendMessage({
             action: 'audioLoad',
             url: file.path,
+            startTime: progressCache[file.path] || 0,
             meta: {
                 title: file.name,
                 artist: file.remote ? '远端源' : (file.bundled ? '本地打包' : '轻量播放器'),
@@ -524,6 +528,14 @@
                 const t = (Number(bgSeek.value) / 100) * bgState.duration;
                 chrome.runtime.sendMessage({ action: 'audioSeek', time: t });
             }
+        });
+    }
+
+    function getOffscreenState() {
+        return new Promise((resolve) => {
+            try {
+                chrome.runtime.sendMessage({ action: 'getOffscreenState' }, (st) => resolve(st || null));
+            } catch (e) { resolve(null); }
         });
     }
 
@@ -555,10 +567,27 @@
         if (searchInput) searchInput.addEventListener('input', () => { searchTerm = searchInput.value; renderPlaylist(); });
         if (sortSelect) sortSelect.addEventListener('change', () => { sortMode = sortSelect.value; renderPlaylist(); });
 
-        // 同步上一会话可能仍在后台播放的音频状态
+        // 若上一会话仍在后台播放音频，则接管其状态（不重复加载本地媒体）
+        let resumedOffscreen = false;
         try {
-            chrome.runtime.sendMessage({ action: 'getOffscreenState' }, (st) => { if (st) bgState = st; });
+            const st = await getOffscreenState();
+            if (st && st.playing && st.url) {
+                const idx = files.findIndex(f => f.path === st.url);
+                if (idx >= 0) {
+                    currentIndex = idx;
+                    currentFile = files[idx];
+                    usingOffscreenAudio = true;
+                    bgState = st;
+                    showBackgroundAudioStatus(files[idx]);
+                    bgTitle.textContent = st.title || files[idx].name;
+                    renderPlaylist();
+                    updatePipVisibility();
+                    resumedOffscreen = true;
+                }
+            }
         } catch (e) { /* ignore */ }
+
+        if (resumedOffscreen) return;
 
         if (files.length > 0) {
             currentMediaNameEl.textContent = files[0].name;
