@@ -17,6 +17,9 @@ Thumbs.db
 /media/*.aac
 /media/*.flac
 
+# 媒体索引缓存（如 media/index/*.ts，由外部媒体服务生成，非项目源码）
+/media/index/
+
 # Python
 __pycache__/
 *.pyc
