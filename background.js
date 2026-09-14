@@ -28,18 +28,21 @@ async function fetchMediaList() {
     const data = await res.json();
     const list = Array.isArray(data) ? data : (Array.isArray(data.files) ? data.files : []);
     // 规范化：补齐 type / name 兜底；透传 tracks（字幕）
-    return list
-      .filter((f) => f && f.path)
-      .map((f) => ({
-        name: f.name || f.path.split('/').pop(),
-        type: f.type || (/\.(mp3|ogg|wav|m4a|aac|flac)$/i.test(f.path) ? 'audio' : 'video'),
-        path: f.path,
-        remote: true,
-        tracks: Array.isArray(f.tracks) ? f.tracks : undefined
-      }));
+    return {
+      ok: true,
+      files: list
+        .filter((f) => f && f.path)
+        .map((f) => ({
+          name: f.name || f.path.split('/').pop(),
+          type: f.type || (/\.(mp3|ogg|wav|m4a|aac|flac)$/i.test(f.path) ? 'audio' : 'video'),
+          path: f.path,
+          remote: true,
+          tracks: Array.isArray(f.tracks) ? f.tracks : undefined
+        }))
+    };
   } catch (err) {
-    console.warn('[background] 拉取后端清单失败，popup 将回退本地打包:', err);
-    return [];
+    // 后端未启动/不可达：返回未可达标记，由 popup 静默回落本地源（不刷 warn）
+    return { ok: false, unreachable: true };
   }
 }
 
@@ -89,7 +92,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (!msg || !msg.action) return;
   switch (msg.action) {
     case 'getMediaList':
-      fetchMediaList().then((files) => sendResponse({ ok: true, files }));
+      fetchMediaList().then((result) => sendResponse(result));
       return true; // 保持消息通道，等待异步响应
     case 'ensureOffscreen':
       ensureOffscreen().then(sendResponse);
