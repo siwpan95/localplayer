@@ -192,6 +192,26 @@ audio {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.extra-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin: -10px 4px 14px;
+}
+.extra-btn {
+    background: #23232b;
+    color: #b9c4d0;
+    border: 1px solid #34343c;
+    border-radius: 30px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.12s ease;
+}
+.extra-btn:hover {
+    background: #2d2d38;
+    border-color: #3f4b5e;
+    color: #fff;
+}
 @media (max-width: 600px) {
     .player-container { padding: 16px; border-radius: 18px; }
     .playlist-item { padding: 10px 14px; font-size: 0.85rem; }

@@ -3,6 +3,16 @@
 所有重要变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.2.5] - 2026-09-14
+
+### 新增
+- 播放交互增强（A 类，均为原生 Web 能力，无新依赖）：
+  - 媒体会话 Media Session API：锁屏元数据 + 硬件媒体键（播放/暂停/上下曲/快进快退跳转）；
+  - 画中画（Picture-in-Picture）按钮（仅视频模式）；
+  - 键盘快捷键：空格/k 播放暂停，←/→ 快退快进 5 秒，↑/↓ 音量，n/p 上下曲；
+  - 进度记忆（chrome.storage.local）：按路径记录进度，重开自动恢复。
+- popup.html / popup.css 增加画中画控件与样式。
+
 ## [1.2.4] - 2026-09-14
 
 ### 新增

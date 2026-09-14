@@ -8,11 +8,14 @@
     const fileCountEl = document.getElementById('fileCount');
     const currentMediaNameEl = document.getElementById('currentMediaName');
     const nowPlayingEl = document.getElementById('nowPlaying');
+    const pipBtn = document.getElementById('pipBtn');
 
     // ---------- 状态 ----------
     let currentIndex = -1;
     let isAudioMode = false;   // 当前是否为音频模式
     let files = [];            // 媒体清单（由混合加载填充）
+    let currentMediaEl = null; // 当前媒体元素（视频或音频）
+    let currentFile = null;    // 当前播放的媒体项
 
     // ---------- 本地打包媒体（随扩展分发，由 media/manifest.json 动态列出） ----------
     // 扩展运行时无法枚举自身包内目录，故由 gen_media_manifest.py 扫描 media/ 生成清单，
@@ -108,7 +111,11 @@
         mediaWrapper.appendChild(audio);
 
         audio.addEventListener('ended', handleEnded);
+        audio.addEventListener('timeupdate', onTimeUpdate);
+        audio.addEventListener('play', () => setPlaybackState('playing'));
+        audio.addEventListener('pause', () => setPlaybackState('paused'));
 
+        updatePipVisibility();
         return audio;
     }
 
@@ -127,6 +134,7 @@
         player.style.display = 'block';
         mediaWrapper.style.aspectRatio = '16 / 9';
         mediaWrapper.style.padding = '0';
+        updatePipVisibility();
     }
 
     // ---------- 播放结束处理 ----------
@@ -192,14 +200,22 @@
             el.classList.toggle('active', i === index);
         });
 
+        let el;
         if (file.type === 'audio') {
-            const audio = switchToAudioMode();
-            attachSource(audio, file, true);
+            el = switchToAudioMode();
+            attachSource(el, file, true);
             player.pause();
         } else {
             switchToVideoMode();
-            attachSource(player, file, true);
+            el = player;
+            attachSource(el, file, true);
         }
+
+        currentMediaEl = el;
+        currentFile = file;
+        updateMediaSession(file);
+        // 元数据就绪后恢复上次播放进度
+        el.addEventListener('loadedmetadata', () => restoreProgress(el, file), { once: true });
     }
 
     // ---------- 渲染播放列表 ----------
@@ -245,11 +261,144 @@
 
     // ---------- 视频元素自带 ended 事件（用于视频模式自动下一曲） ----------
     player.addEventListener('ended', handleEnded);
+    player.addEventListener('timeupdate', onTimeUpdate);
+    player.addEventListener('play', () => setPlaybackState('playing'));
+    player.addEventListener('pause', () => setPlaybackState('paused'));
+
+    // ---------- 进度记忆（chrome.storage.local） ----------
+    const progressCache = {};   // path -> 秒
+    let progressSaveTimer = null;
+
+    function loadProgress() {
+        return new Promise(resolve => {
+            chrome.storage.local.get('lp_progress', r => {
+                if (r && r.lp_progress && typeof r.lp_progress === 'object') {
+                    Object.assign(progressCache, r.lp_progress);
+                }
+                resolve();
+            });
+        });
+    }
+
+    function saveProgress(path, time) {
+        if (!path || !isFinite(time) || time <= 0) return;
+        progressCache[path] = time;
+        if (progressSaveTimer) clearTimeout(progressSaveTimer);
+        progressSaveTimer = setTimeout(() => {
+            chrome.storage.local.set({ lp_progress: progressCache });
+        }, 1000);
+    }
+
+    function onTimeUpdate(e) {
+        if (currentFile) saveProgress(currentFile.path, e.target.currentTime);
+    }
+
+    function restoreProgress(el, file) {
+        if (!file) return;
+        const t = progressCache[file.path];
+        if (typeof t === 'number' && t > 0 && isFinite(el.duration) && t < el.duration - 1) {
+            try { el.currentTime = t; } catch (e) { /* ignore */ }
+        }
+    }
+
+    // ---------- Media Session（锁屏元数据 + 硬件媒体键） ----------
+    function setPlaybackState(s) {
+        if ('mediaSession' in navigator) {
+            try { navigator.mediaSession.playbackState = s; } catch (e) { /* ignore */ }
+        }
+    }
+
+    function updateMediaSession(file) {
+        if (!('mediaSession' in navigator)) return;
+        try {
+            navigator.mediaSession.metadata = new MediaMetadata({
+                title: file.name,
+                artist: file.remote ? '远端源' : (file.bundled ? '本地打包' : '轻量播放器'),
+                album: '轻量播放器'
+            });
+        } catch (e) { /* ignore */ }
+    }
+
+    function setupMediaSession() {
+        if (!('mediaSession' in navigator)) return;
+        const ms = navigator.mediaSession;
+        const safe = (fn) => (d) => { try { fn(d); } catch (e) { /* ignore */ } };
+        ms.setActionHandler('play', safe(() => { if (currentMediaEl) currentMediaEl.play().catch(() => {}); }));
+        ms.setActionHandler('pause', safe(() => { if (currentMediaEl) currentMediaEl.pause(); }));
+        ms.setActionHandler('nexttrack', safe(() => playByIndex(currentIndex + 1)));
+        ms.setActionHandler('previoustrack', safe(() => playByIndex(currentIndex - 1)));
+        ms.setActionHandler('seekto', safe((d) => { if (currentMediaEl && d.seekTime != null) currentMediaEl.currentTime = d.seekTime; }));
+        ms.setActionHandler('seekbackward', safe((d) => { if (currentMediaEl) currentMediaEl.currentTime = Math.max(0, currentMediaEl.currentTime - (d.seekOffset || 10)); }));
+        ms.setActionHandler('seekforward', safe((d) => { if (currentMediaEl) currentMediaEl.currentTime = Math.min((currentMediaEl.duration || 1e9), currentMediaEl.currentTime + (d.seekOffset || 10)); }));
+    }
+
+    // ---------- 键盘快捷键 ----------
+    function setupKeyboard() {
+        document.addEventListener('keydown', (e) => {
+            if (!currentMediaEl) return;
+            const tag = (e.target && e.target.tagName) || '';
+            if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+            switch (e.key) {
+                case ' ':
+                case 'k':
+                    e.preventDefault();
+                    if (currentMediaEl.paused) currentMediaEl.play().catch(() => {});
+                    else currentMediaEl.pause();
+                    break;
+                case 'ArrowRight':
+                    e.preventDefault();
+                    currentMediaEl.currentTime = Math.min((currentMediaEl.duration || 1e9), currentMediaEl.currentTime + 5);
+                    break;
+                case 'ArrowLeft':
+                    e.preventDefault();
+                    currentMediaEl.currentTime = Math.max(0, currentMediaEl.currentTime - 5);
+                    break;
+                case 'ArrowUp':
+                    e.preventDefault();
+                    currentMediaEl.volume = Math.min(1, currentMediaEl.volume + 0.1);
+                    break;
+                case 'ArrowDown':
+                    e.preventDefault();
+                    currentMediaEl.volume = Math.max(0, currentMediaEl.volume - 0.1);
+                    break;
+                case 'n':
+                    playByIndex(currentIndex + 1);
+                    break;
+                case 'p':
+                    playByIndex(currentIndex - 1);
+                    break;
+            }
+        });
+    }
+
+    // ---------- 画中画（仅视频） ----------
+    function updatePipVisibility() {
+        if (pipBtn) pipBtn.hidden = isAudioMode;
+    }
+
+    if (pipBtn) {
+        pipBtn.addEventListener('click', async () => {
+            try {
+                if (document.pictureInPictureElement) {
+                    await document.exitPictureInPicture();
+                } else if (!isAudioMode && document.pictureInPictureEnabled && player) {
+                    await player.requestPictureInPicture();
+                }
+            } catch (e) {
+                console.warn('画中画操作失败:', e);
+            }
+            pipBtn.blur(); // 避免空格键误触发按钮
+        });
+    }
 
     // ---------- 初始化 ----------
     async function init() {
+        await loadProgress();
+        setupMediaSession();
+        setupKeyboard();
         files = await loadMedia();
         renderPlaylist();
+        updatePipVisibility();
 
         if (files.length > 0) {
             currentMediaNameEl.textContent = files[0].name;

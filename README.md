@@ -123,6 +123,19 @@ LocalPlayer.plugins.register({
 - `loadMedia()` 调用 `LocalPlayer.plugins.collectMedia()`，按优先级取**第一个返回非空列表**的插件（fallback 链）。
 - 示例插件（从 `chrome.storage.sync` 读自定义列表）见 [`plugins/sample-source.js`](plugins/sample-source.js)；默认不加载，按其文件头注释在 `popup.html` 加入对应 `<script>` 即可启用。
 
+## 播放交互增强（A 类）
+
+围绕「单用户本地播放」做的最小增强，均为原生 Web 能力，不引入任何依赖：
+
+- **媒体会话（Media Session API）**：播放时写入锁屏元数据（标题 / 来源），并接管硬件媒体键——播放 / 暂停、上一曲 / 下一曲、快进 / 快退 / 跳转。键盘与锁屏控制统一复用现有 `playByIndex` 与进度逻辑。
+- **画中画（Picture-in-Picture）**：视频模式下显示「⧉ 画中画」按钮，点击将视频浮窗化（音频模式自动隐藏按钮），再次点击退出。
+- **键盘快捷键**（popup 聚焦时生效）：
+  - `空格` / `k`：播放 / 暂停
+  - `←` / `→`：后退 / 前进 5 秒
+  - `↑` / `↓`：音量 ±0.1
+  - `n` / `p`：下一曲 / 上一曲
+- **进度记忆（chrome.storage.local）**：按媒体路径记录播放位置，重开扩展后自动恢复到上次进度（误差 < 1 秒处不跳）。所有文件进度缓存在 `lp_progress` 中。
+
 ## 架构选型笔记：Codis / Cordis / MediaMTX 对本项目有帮助吗？
 
 结论：**三者现阶段都不相关（MediaMTX 抛开 WebRTC 看其本体亦然），引入属过度设计。**
