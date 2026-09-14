@@ -113,6 +113,21 @@ if ('mediaSession' in navigator) {
 let pc = null, ws = null, castActive = false;
 let useRelay = false, pendingSignaling = [];
 const SIGNAL_URL = 'ws://127.0.0.1:5000/ws';
+let castMeta = null;     // 当前投送的曲目元数据（回传给接收端显示）
+let viewerCount = 0;     // 已连接的接收端数量（由 server 经 viewer-count 上报）
+
+function sendCastMeta() {
+    if (castMeta) signalingSend({ type: 'meta', title: castMeta.title, artist: castMeta.artist, album: castMeta.album });
+}
+
+function notifyCastStatus() {
+    chrome.runtime.sendMessage({
+        action: 'castStatus',
+        active: castActive,
+        viewers: viewerCount,
+        meta: castMeta
+    }).catch(() => {});
+}
 
 function getCastStream() {
     const tracks = [];
@@ -147,6 +162,9 @@ function handleSignalingMessage(m) {
         if (pc) pc.setRemoteDescription(new RTCSessionDescription(m.sdp)).catch(() => {});
     } else if (m.type === 'candidate') {
         if (pc) pc.addIceCandidate(m.candidate).catch(() => {});
+    } else if (m.type === 'viewer-count') {
+        viewerCount = (typeof m.count === 'number') ? m.count : 0;
+        notifyCastStatus();
     }
 }
 
@@ -167,6 +185,7 @@ async function createAndSendOffer() {
 function startRelay() {
     useRelay = true;
     signalingSend({ type: 'role', role: 'sender' });
+    sendCastMeta();
     flushPending();
 }
 
@@ -185,6 +204,7 @@ function connectSignaling() {
         if (settled) return;
         settled = true; clearTimeout(timer);
         signalingSend({ type: 'role', role: 'sender' });
+        sendCastMeta();
         flushPending();
     };
     ws.onerror = () => {
@@ -202,13 +222,16 @@ function connectSignaling() {
 function startCast() {
     if (castActive) return;
     castActive = true;
+    notifyCastStatus();
     connectSignaling();
 }
 
 function stopCast() {
     castActive = false;
     useRelay = false;
+    viewerCount = 0;
     pendingSignaling = [];
+    notifyCastStatus();
     if (pc) { try { pc.close(); } catch (e) {} pc = null; }
     if (ws) { try { ws.close(); } catch (e) {} ws = null; }
 }
@@ -252,6 +275,7 @@ chrome.runtime.onMessage.addListener((msg) => {
             currentPath = msg.url || '';
             currentTitle = msg.meta ? (msg.meta.title || '') : '';
             pendingStart = (typeof msg.startTime === 'number' && msg.startTime > 0) ? msg.startTime : 0;
+            castMeta = msg.meta || null;
             setMeta(msg.meta);
             if (mediaKind === 'video') {
                 videoEl.hidden = false;
