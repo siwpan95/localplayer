@@ -176,7 +176,10 @@ LocalPlayer.plugins.register({
   ```bash
   python check_version.py
   ```
-- 已配置 git `pre-commit` 钩子：提交时自动运行上述自检，版本不一致会**阻止提交**并提示对齐；找不到 python 时仅警告放行。
+- 提交前自检钩子已纳入版本管理（位于 `hooks/pre-commit`，与 `check_version.py` 同仓库跟踪）。启用方式二选一：
+  - **推荐**：在本仓库执行 `git config core.hooksPath hooks`，此后 git 直接读取跟踪目录里的钩子，且与提交内容始终同步（无需手动复制）。
+  - 或手动复制：`cp hooks/pre-commit .git/hooks/pre-commit`（Windows 用 `copy hooks\pre-commit .git\hooks\pre-commit`）。
+- 钩子行为：提交时自动运行 `check_version.py`，版本不一致会**阻止提交**并提示对齐；找不到 python 时仅警告放行。
 
 > 历史教训：v1.2.2、v1.3.1 都曾因只改了 CHANGELOG 或只改了 manifest 一方，导致扩展列表显示的版本号与文档脱节；此自检即为防止再犯。
 
