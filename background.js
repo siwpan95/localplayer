@@ -67,6 +67,24 @@ function sendToOffscreen(cmd, extra) {
   chrome.runtime.sendMessage(Object.assign({ target: 'offscreen', cmd }, extra)).catch(() => {});
 }
 
+// ---------- 网页投送信令中转（offscreen 直连失败时的退路） ----------
+let castRelayWs = null;
+const CAST_SIGNAL_URL = 'ws://127.0.0.1:5000/ws';
+
+function ensureCastRelay() {
+  if (castRelayWs && (castRelayWs.readyState === 0 || castRelayWs.readyState === 1)) return;
+  try { castRelayWs = new WebSocket(CAST_SIGNAL_URL); }
+  catch (e) { console.warn('[background] 投送信令中转连接失败:', e); return; }
+  castRelayWs.onopen = () => castRelayWs.send(JSON.stringify({ type: 'role', role: 'sender' }));
+  castRelayWs.onmessage = (e) => {
+    let m; try { m = JSON.parse(e.data); } catch (_) { return; }
+    // 转发给 offscreen（offscreen 以 castRelayIn 接收）
+    chrome.runtime.sendMessage({ target: 'castRelayIn', msg: m }).catch(() => {});
+  };
+  castRelayWs.onclose = () => { castRelayWs = null; };
+  castRelayWs.onerror = () => { try { castRelayWs.close(); } catch (_) {} castRelayWs = null; };
+}
+
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (!msg || !msg.action) return;
   switch (msg.action) {
@@ -88,6 +106,22 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     case 'audioSeek':
       sendToOffscreen('seek', { time: msg.time });
       return false;
+    case 'castStart':
+      ensureOffscreen().then((ok) => { if (ok) sendToOffscreen('castStart', { url: msg.url, meta: msg.meta, startTime: msg.startTime, kind: msg.kind }); });
+      return false;
+    case 'castStop':
+      sendToOffscreen('castStop');
+      return false;
+    case 'castRelay':
+      ensureCastRelay();
+      if (castRelayWs) {
+        if (castRelayWs.readyState === 1) {
+          castRelayWs.send(JSON.stringify(msg.msg));
+        } else {
+          castRelayWs.addEventListener('open', () => castRelayWs.send(JSON.stringify(msg.msg)), { once: true });
+        }
+      }
+      return false;
     case 'getOffscreenState':
       sendResponse(lastOffscreenState || { playing: false, currentTime: 0, duration: 0 });
       return true;
@@ -103,3 +137,25 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       return false;
   }
 });
+
+// ---------- 右键菜单：打开常驻界面（侧边栏 / 独立应用） ----------
+function setupContextMenus() {
+  if (!chrome.contextMenus) return;
+  chrome.contextMenus.removeAll(() => {
+    chrome.contextMenus.create({ id: 'open_sidepanel', title: '打开侧边栏播放器', contexts: ['action'] });
+    chrome.contextMenus.create({ id: 'open_player', title: '打开独立播放器页面', contexts: ['action'] });
+  });
+  chrome.contextMenus.onClicked.addListener((info) => {
+    if (info.menuItemId === 'open_sidepanel') {
+      if (chrome.sidePanel && info.windowId != null) {
+        chrome.sidePanel.open({ windowId: info.windowId }).catch(() => {});
+      }
+    } else if (info.menuItemId === 'open_player') {
+      chrome.tabs.create({ url: chrome.runtime.getURL('player.html') }).catch(() => {});
+    }
+  });
+}
+
+if (chrome.runtime.onInstalled) {
+  chrome.runtime.onInstalled.addListener(setupContextMenus);
+}

@@ -167,6 +167,19 @@ LocalPlayer.plugins.register({
 - **Cordis**：仅当真正需要插件生态时。即便如此，本项目采用上面的**最小自定义插件接口**即可满足，远比引入 Cordis 整个体系轻量。
 - **MediaMTX**：仅当项目要接入**直播源**（RTSP 摄像头、RTMP / SRT 推流、OBS 等）时才有意义——届时它是最合适的「收流 → 转封装为 HLS」桥梁，而我们已接入的 hls.js 正好能消费它产出的 `.m3u8`。纯静态本地媒体场景下它纯属多余。
 
+## 开发约定
+
+### 版本号与 CHANGELOG 必须同步
+每次发版改 `manifest.json` 的 `version` 时，**必须**同步在 `CHANGELOG.md` 顶部新增一条 `## [x.y.z]` 记录，且顶部第一条版本号应与 `manifest.json` 一致（`check_version.py` 取文件顶部第一条为"最新"）。
+
+- 自检脚本 `check_version.py`：比对 `manifest.json` 的 `version` 与 `CHANGELOG.md` 顶部版本号，一致退出码 0，不一致退出码 1。
+  ```bash
+  python check_version.py
+  ```
+- 已配置 git `pre-commit` 钩子：提交时自动运行上述自检，版本不一致会**阻止提交**并提示对齐；找不到 python 时仅警告放行。
+
+> 历史教训：v1.2.2、v1.3.1 都曾因只改了 CHANGELOG 或只改了 manifest 一方，导致扩展列表显示的版本号与文档脱节；此自检即为防止再犯。
+
 ## 许可
 
 MIT License，见 [LICENSE](LICENSE)。

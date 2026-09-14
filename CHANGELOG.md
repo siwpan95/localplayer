@@ -3,6 +3,26 @@
 所有重要变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+> **提交前自检**：运行 `python check_version.py` 校验 `manifest.json` 的 `version` 与本文档最新 `## [x.y.z]` 一致（已配 git pre-commit 钩子，不一致将阻止提交）。
+
+## [1.3.1] - 2026-09-14
+
+### 改进（网页投送健壮性）
+- WebRTC 信令「直连优先 + background 中转兜底」：offscreen 先直连 `ws://127.0.0.1:5000/ws`，2.5s 超时或报错则回落经 `chrome.runtime` → background 持有的中转 WS（绕开 offscreen 直连本地 WS 可能被 `host_permissions`/扩展限制拦截的未知风险）。background.js 新增 `ensureCastRelay` 与 `castRelay` 消息分支；offscreen.js 信令收发统一走 `signalingSend`/`handleSignalingMessage`，新增 `castRelayIn` 接收分支。
+- popup 投送开关开启前先做后端可达性校验（fetch `http://127.0.0.1:5000/api/list`，1.5s 超时），不可达则弹窗提示先执行 `python server.py`，避免静默挂起。
+- 投送按钮可用性 UX：后端不可达时 `castBtn` 自动置灰（CSS `.extra-btn:disabled`）+ hover 提示「需要 server.py」；每 5s 复查，后端就绪后自动恢复可用。`manifest.json` 版本号补登为 1.3.1（此前 chrome://extensions 仍显示 1.2.7）。
+
+## [1.3.0] - 2026-09-14
+
+### 新增 / 完善（持久化界面 + 网页投送）
+- **常驻界面（修复「切标签页自行回退」）**：新增 `sidepanel.html`（侧边栏，窗口锚定、切标签不关）与 `player.html`（全页独立应用，对应 GitHub/DSH 的「独立插件应用」），两者并存且复用 `popup.js` 播放逻辑与 `app-layout.css` 布局。`manifest.json` 增加 `side_panel` 声明与 `contextMenus` 权限；右键扩展图标可「打开侧边栏播放器 / 打开独立播放器页面」。
+- **网页投送（WebRTC）**：offscreen 升级为音视频统一主运行时（新增隐藏 `<video id="bgVideo">`），可经 WebRTC 把当前播放投送到外部网页。扩展界面新增「🔊 网页投送」开关，开启后 offscreen 加载并串流当前媒体、本地界面静音避免双声；`server.py` 增加 `/ws` 信令中继与 `/remote` 观看页（新增 `flask-sock` 依赖）。
+
+### 已知限制
+- 同时打开多个扩展界面（popup/侧栏/全页）时，各自会独立解码播放（视频可能多份解码；音频由 offscreen 主运行时统一，界面本地静音）。
+- WebRTC 投送需先启动 `server.py`（默认 `127.0.0.1:5000`）；offscreen 直连 `ws://127.0.0.1:5000/ws` 依赖 `host_permissions`，需在浏览器中实测。
+- 网页投送与本地界面同机时，外部 `/remote` 页会再播放一份音频（典型投送语义：投到异机/另一设备），同机请静音 `/remote` 页。
+
 ## [1.2.7] - 2026-09-14
 
 ### 新增 / 完善

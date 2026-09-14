@@ -15,6 +15,8 @@
     const bgSeek = document.getElementById('bgSeek');
     const searchInput = document.getElementById('searchInput');
     const sortSelect = document.getElementById('sortSelect');
+    const castBtn = document.getElementById('castBtn');
+    let castOn = false;
 
     // ---------- 状态 ----------
     let currentIndex = -1;
@@ -531,6 +533,73 @@
         });
     }
 
+    function serverReachable() {
+        return new Promise((resolve) => {
+            try {
+                const ctrl = new AbortController();
+                const t = setTimeout(() => ctrl.abort(), 1500);
+                fetch('http://127.0.0.1:5000/api/list', { signal: ctrl.signal, cache: 'no-store' })
+                    .then((r) => { clearTimeout(t); resolve(r.ok); })
+                    .catch(() => { clearTimeout(t); resolve(false); });
+            } catch (e) { resolve(false); }
+        });
+    }
+
+    function updateCastAvailability() {
+        serverReachable().then((ok) => {
+            if (castOn) return; // 投送进行中保持可用（用于停止）
+            if (ok) {
+                castBtn.disabled = false;
+                castBtn.title = '网页投送：把当前播放经 WebRTC 投到外部网页';
+            } else {
+                castBtn.disabled = true;
+                castBtn.title = '网页投送需要后端 server.py：在项目目录执行 python server.py';
+            }
+        });
+    }
+
+    function setupCast() {
+        if (!castBtn) return;
+        castBtn.addEventListener('click', async () => {
+            // 开启前再次校验后端 server.py 是否在 127.0.0.1:5000 运行
+            if (!castOn) {
+                const ok = await serverReachable();
+                if (!ok) {
+                    alert('网页投送需要后端 server.py 运行在 http://127.0.0.1:5000。\n请先在项目目录执行：python server.py');
+                    castBtn.disabled = true;
+                    castBtn.title = '网页投送需要后端 server.py：在项目目录执行 python server.py';
+                    return;
+                }
+            }
+            castOn = !castOn;
+            if (!castOn) updateCastAvailability();
+            if (castOn) {
+                if (currentFile) {
+                    chrome.runtime.sendMessage({
+                        action: 'castStart',
+                        url: currentFile.path,
+                        kind: currentFile.type,
+                        startTime: currentMediaEl ? currentMediaEl.currentTime : 0,
+                        meta: {
+                            title: currentFile.name,
+                            artist: currentFile.remote ? '远端源' : (currentFile.bundled ? '本地打包' : '轻量播放器'),
+                            album: '轻量播放器'
+                        }
+                    });
+                }
+                if (currentMediaEl) currentMediaEl.muted = true;
+                castBtn.textContent = '🔴 停止投送';
+            } else {
+                chrome.runtime.sendMessage({ action: 'castStop' });
+                if (currentMediaEl) currentMediaEl.muted = false;
+                castBtn.textContent = '🔊 网页投送';
+            }
+        });
+        // 后端不可达时置灰投送按钮 + hover 提示；每 5s 复查
+        updateCastAvailability();
+        setInterval(updateCastAvailability, 5000);
+    }
+
     function getOffscreenState() {
         return new Promise((resolve) => {
             try {
@@ -559,6 +628,7 @@
         setupMediaSession();
         setupKeyboard();
         setupBgControls();
+        setupCast();
         files = await loadMedia();
         currentIndex = 0;
         renderPlaylist();

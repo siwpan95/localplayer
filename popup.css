@@ -212,6 +212,18 @@ audio {
     border-color: #3f4b5e;
     color: #fff;
 }
+.extra-btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    background: #1a1a20;
+    color: #6b7280;
+    border-color: #2a2a30;
+}
+.extra-btn:disabled:hover {
+    background: #1a1a20;
+    border-color: #2a2a30;
+    color: #6b7280;
+}
 .playlist-tools {
     display: flex;
     gap: 8px;
