@@ -5,6 +5,21 @@
 
 > **提交前自检**：运行 `python check_version.py` 校验 `manifest.json` 的 `version` 与本文档最新 `## [x.y.z]` 一致（已配 git pre-commit 钩子，不一致将阻止提交）。
 
+## [1.3.5] - 2026-09-14
+
+### 新增
+- **联动 private-radio-stations**：新增媒体源插件 `plugins/radio-stations-source.js`，
+  把另一个项目（本地转播站）的媒体源直接列进播放列表，本扩展即可当作它的音视频播放器使用。
+  - 数据源在对端：在 `private-radio-stations` 项目里执行 `npm run bridge`（或双击 `start-bridge.bat`），
+    会起一个聚合服务，把「电台直播 / 电台预设 / IPTV 频道 / 录制回放 / MediaMTX HLS 直播」
+    聚合成扩展认识的 `GET /api/list` → `[{name, path, type}]`。
+  - 优先级 15（后端 10 / 样例 5 / 本地打包 0）：**桥在线就用它；桥不在线时静默回落**，
+    不刷控制台、不弹错，播放器照常可用。
+  - 选项页新增「联动桥地址」（默认 `http://127.0.0.1:8787`）与「测试联动桥」按钮：
+    测试走对端的 `/api/health`，能区分「连不上」与「连上了但对端没在转播 / 没频道」。
+  - `manifest.json` 补 8787 端口的 `host_permissions`（MV3 下扩展页跨域必须显式授权）。
+  - 只做播放，不做控制：启停转播仍在对端自己的面板上完成。
+
 ## [1.3.4] - 2026-09-14
 
 ### 修复

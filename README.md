@@ -133,8 +133,63 @@ LocalPlayer.plugins.register({
 
 - 注册表与取数逻辑见 [`plugins/plugin-api.js`](plugins/plugin-api.js)。
 - 内置两个源：**远端后端**（priority 10，走 background 拉 `/api/list`）与**本地打包**（priority 0，读 `media/manifest.json`）。
+  另有随本版附带的**联动源**（priority 15，见下节），优先级高于两者。
 - `loadMedia()` 调用 `LocalPlayer.plugins.collectMedia()`，按优先级取**第一个返回非空列表**的插件（fallback 链）。
 - 示例插件（从 `chrome.storage.sync` 读自定义列表）见 [`plugins/sample-source.js`](plugins/sample-source.js)；默认不加载，按其文件头注释在 `popup.html` 加入对应 `<script>` 即可启用。
+
+## 联动 private-radio-stations（把本扩展当它的音视频播放器）
+
+本扩展可以当作 [private-radio-stations](../private-radio-stations-master)（本地转播站）的播放器前端：
+在那边起一个聚合桥，这里的播放列表就自动出现它的媒体源。
+
+```
+private-radio-stations  ──  npm run bridge  ──▶  http://127.0.0.1:8787/api/list
+                                                          │
+轻量播放器（本扩展）  ◀── 插件 radio-stations（priority 15）┘
+```
+
+### 怎么用
+
+1. 在 `private-radio-stations` 目录执行 `npm run bridge`（或双击 `start-bridge.bat`）。
+2. 本扩展无需任何改动 —— 打开 popup / 独立播放器即可看到列表。
+   若改过端口，在「选项 → 联动桥地址」里填对应地址。
+3. 点「测试联动桥」可以确认桥是否在线；它探的是对端的 `/api/health`，
+   会区分「连不上」和「连上了但对端没在转播 / 没频道」这两种完全不同的情况。
+
+### 会列进来什么
+
+| 源 | 内容 | 依赖 |
+|---|---|---|
+| `audio.live` | 正在转播的电台（MP3 流） | audio 应用在线**且**正在转播 |
+| `audio.hls` | 同一路电台的 HLS 版本 | 同上，且对端开了 HLS |
+| `audio.presets` | 电台预设 | audio 应用在线即可（直接播放，无需转播） |
+| `video.hls` | MediaMTX HLS 直播 | MediaMTX 已收到推流 |
+| `video.channels` | IPTV 频道库 | video 应用在线且有频道文件 |
+| `video.recordings` | 录制回放 | video 应用在线（仅列 Chromium 能解的容器） |
+
+**任一源不可用就只是不出现**，不会让播放器报错或空白。全都不可用时返回空清单，
+扩展按自己的 fallback 链回落到「远端后端」→「本地打包」媒体。
+
+两个刻意的取舍：
+
+- **不列未转播的 `/stream`**：对端没在转播时那是一条静音占位流，列出来只会让人以为坏了。
+- **不列 `.ts` 录制**：Chromium 没有原生 MPEG-TS 解码器（`index.m3u8` 引用的分片另当别论），
+  列出来就是一个点了没反应的条目。等对端录制改成 mp4 / mkv，无需改代码会自动出现。
+
+### 只做播放，不做控制
+
+联动源**不调用**对端的 `/api/relay/start`、`/api/player/launch` 等写接口。
+开始 / 停止转播、切换频道仍在对端自己的面板上做 —— 播放器保持「只读消费者」，
+避免两个界面同时写同一份状态。
+
+### 实现要点
+
+- 扩展侧只有 [`plugins/radio-stations-source.js`](plugins/radio-stations-source.js) 一个文件，
+  它注册一个媒体源，**没有改动 `popup.js`**（`loadMedia()` 本就走插件链）。
+- 聚合逻辑在[对端的 `scripts/localplayer-bridge.mjs`](../private-radio-stations-master/scripts/localplayer-bridge.mjs)：
+  数据归拥有数据的一方，扩展保持薄；对端那份还有 `npm test` 覆盖的集成测试
+  （起假上游验证聚合与降级）。
+- MV3 下扩展页跨域必须显式授权，故 `manifest.json` 补了 8787 端口的 `host_permissions`。
 
 ## 播放交互增强（A 类）
 

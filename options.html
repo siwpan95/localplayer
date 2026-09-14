@@ -20,9 +20,21 @@
             </p>
         </div>
 
+        <div class="field">
+            <label for="radioBridgeUrl">联动桥地址（private-radio-stations）</label>
+            <input type="text" id="radioBridgeUrl" placeholder="http://127.0.0.1:8787" spellcheck="false" autocomplete="off">
+            <p class="hint">
+                在 <code>private-radio-stations</code> 项目里执行 <code>npm run bridge</code>
+                （或双击 <code>start-bridge.bat</code>），播放器就会把电台直播 / 电台预设 /
+                IPTV 频道 / 录制回放 / HLS 直播列进来。
+                <strong>桥不在线时会自动静默回落</strong>到上面的后端或随扩展打包的本地媒体，不会报错。
+            </p>
+        </div>
+
         <div class="actions">
             <button id="saveBtn">保存</button>
             <button id="testBtn" class="ghost">测试连接</button>
+            <button id="testBridgeBtn" class="ghost">测试联动桥</button>
             <button id="resetBtn" class="ghost">恢复默认</button>
         </div>
 
