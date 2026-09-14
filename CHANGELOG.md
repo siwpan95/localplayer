@@ -3,6 +3,13 @@
 所有重要变更记录于此。格式参考 [Keep a Changelog](https://keepachangelog.com/)，
 版本号遵循 [语义化版本](https://semver.org/lang/zh-CN/)。
 
+## [1.2.2] - 2026-09-14
+
+### 修复
+- 修正本地媒体列表写死四个示例文件名（`LOCAL_MEDIA`）导致用户自行放入的媒体不显示的问题。
+  改为由 `media/manifest.json` 动态列出实际文件，并提供 `gen_media_manifest.py` / `.bat`
+  扫描 `media/` 生成清单；放入新文件后重新运行脚本并刷新扩展即可列出。
+
 ## [1.2.1] - 2026-09-14
 
 ### 新增

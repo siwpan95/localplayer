@@ -14,18 +14,27 @@
     let isAudioMode = false;   // 当前是否为音频模式
     let files = [];            // 媒体清单（由混合加载填充）
 
-    // ---------- 本地打包媒体（随扩展分发，经 web_accessible_resources 暴露） ----------
-    const LOCAL_MEDIA = [
-        { name: '示例视频 1.mp4',  file: 'media/sample1.mp4',        type: 'video' },
-        { name: '示例视频 2.webm', file: 'media/sample2.webm',       type: 'video' },
-        { name: '示例音频 1.mp3',  file: 'media/sample_audio1.mp3',  type: 'audio' },
-        { name: '示例音频 2.ogg',  file: 'media/sample_audio2.ogg',  type: 'audio' }
-    ].map(m => ({
-        name: m.name,
-        type: m.type,
-        path: chrome.runtime.getURL(m.file),
-        bundled: true
-    }));
+    // ---------- 本地打包媒体（随扩展分发，由 media/manifest.json 动态列出） ----------
+    // 扩展运行时无法枚举自身包内目录，故由 gen_media_manifest.py 扫描 media/ 生成清单，
+    // popup 读取该清单得到实际存在的媒体文件（避免硬编码示例文件名）。
+    async function loadBundledMedia() {
+        try {
+            const res = await fetch(chrome.runtime.getURL('media/manifest.json'), { cache: 'no-store' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const list = await res.json();
+            if (Array.isArray(list) && list.length) {
+                return list.map(m => ({
+                    name: m.name,
+                    type: m.type,
+                    path: chrome.runtime.getURL('media/' + m.file),
+                    bundled: true
+                }));
+            }
+        } catch (e) {
+            console.warn('读取本地媒体清单失败，请先运行 gen_media_manifest.py:', e);
+        }
+        return [];
+    }
 
     // ---------- 混合加载：远端清单优先，本地打包兜底 ----------
     async function loadMedia() {
@@ -43,8 +52,8 @@
         } catch (e) {
             console.warn('获取远端清单失败，回退到本地打包媒体:', e);
         }
-        // 远端有内容用远端；否则用随扩展打包的媒体
-        return remote.length ? remote : LOCAL_MEDIA;
+        // 远端有内容用远端；否则读取随扩展打包的 media/manifest.json
+        return remote.length ? remote : await loadBundledMedia();
     }
 
     // ---------- 工具函数 ----------
@@ -138,7 +147,7 @@
         playlistEl.innerHTML = '';
 
         if (files.length === 0) {
-            playlistEl.innerHTML = '<div class="empty-msg">📭 暂无媒体文件<br><span style="font-size:0.8rem;">请启动后端或将媒体放入 media 目录</span></div>';
+            playlistEl.innerHTML = '<div class="empty-msg">📭 暂无媒体文件<br><span style="font-size:0.8rem;">请运行 gen_media_manifest.py 生成清单，或启动 Flask 后端</span></div>';
             fileCountEl.textContent = '0 个文件';
             return;
         }

@@ -8,6 +8,7 @@ Thumbs.db
 # 媒体文件（用户自有内容，非项目源码，不纳入版本库；仅保留说明文档 media/README.md）
 /media/*
 !/media/README.md
+!/media/manifest.json
 
 # Python
 __pycache__/

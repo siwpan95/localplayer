@@ -18,7 +18,9 @@ localplayer/
 ├── options.js        # 选项页逻辑（读写后端地址到 chrome.storage.sync）
 ├── background.js     # MV3 service worker（拉取后端 /api/list 清单）
 ├── server.py         # 可选 Flask 后端（/api/list + /media/<file>）
-├── media/            # 随扩展打包的媒体（含 README 说明）
+├── gen_media_manifest.py       # 扫描 media/ 生成本地媒体清单 media/manifest.json
+├── gen_media_manifest.bat      # 同上（Windows 双击运行）
+├── media/            # 随扩展打包的媒体（含 README 说明与 manifest.json 清单）
 ├── requirements.txt  # 可选 Flask 后端依赖
 ├── CHANGELOG.md      # 版本变更记录
 ├── LICENSE           # MIT
@@ -47,11 +49,11 @@ localplayer/
 
 ## 媒体来源（两种模式）
 
-`popup.js` 顶部 `USE_FLASK_BACKEND` 控制媒体清单来源。两种模式可同时存在（见下文「混合模式」）。
+`popup.js` 的 `loadMedia()` 决定媒体清单来源。两种模式可同时存在（见下文「混合模式」）。
 
 ### 模式 A：随扩展打包 + `web_accessible_resources`
 
-把媒体文件直接放进扩展目录，并在 `manifest.json` 声明：
+把媒体文件放进 `media/` 目录，并在 `manifest.json` 声明：
 
 ```json
 "web_accessible_resources": [{
@@ -60,8 +62,9 @@ localplayer/
 }]
 ```
 
-`popup.js` 中将路径改写为
-`chrome-extension://<扩展ID>/media/xxx.mp4`。
+扩展运行时**无法枚举自身包内目录**，所以本地媒体清单由 `gen_media_manifest.py`（或 `gen_media_manifest.bat`）
+扫描 `media/` 生成 `media/manifest.json`，`popup.js` 读取该清单得到实际文件，路径形如
+`chrome-extension://<扩展ID>/media/xxx.mp4`。**放入新文件后需重新运行生成脚本并刷新扩展**，popup 才会列出它们。
 媒体随扩展分发，无需后端，完全离线可用。
 
 ### 模式 B：走 background service worker 拉取后端清单
@@ -82,7 +85,7 @@ localplayer/
 **实现（`popup.js` 的 `loadMedia()`）**：popup 启动先 `chrome.runtime.sendMessage({action:'getMediaList'})`
 向 `background.js` 取远端清单；`background.js` 用 `fetch` 调用后端 `/api/list`（地址来自
 `chrome.storage.sync.backendUrl`，默认 `http://127.0.0.1:5000`，可覆盖）。若远端返回非空 →
-用后端模式（B）；若拉取失败 / 后端未起 → 回退到 `LOCAL_MEDIA`（扩展内 `media/` 打包文件，A）。
+用后端模式（B）；若拉取失败 / 后端未起 → 回退到 `media/manifest.json` 列出的本地打包文件（A）。
 两种来源互不干扰，最终统一进 `files` 数组。
 
 **配套 Flask 后端**：`server.py` 提供 `GET /api/list`（返回 `{name,path,type}` 数组，
