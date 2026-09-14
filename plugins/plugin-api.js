@@ -30,7 +30,10 @@ window.LocalPlayer = (function () {
                 const items = await src.getMedia();
                 if (Array.isArray(items) && items.length) return items;
             } catch (e) {
-                console.warn(`LocalPlayer: 插件「${src.name || src.id}」获取失败，已跳过`, e);
+                // LP_SILENT 前缀：预期内的静默跳过（如后端未启动），不打日志
+                if (!(e && typeof e.message === 'string' && e.message.startsWith('LP_SILENT:'))) {
+                    console.warn(`LocalPlayer: 插件「${src.name || src.id}」获取失败，已跳过`, e);
+                }
             }
         }
         return [];

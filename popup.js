@@ -75,7 +75,8 @@
                             tracks: Array.isArray(f.tracks) ? f.tracks : undefined
                         })));
                     } else {
-                        reject(new Error('后端清单为空或未配置'));
+                        // 后端未启动/无媒体：静默回落本地源（LP_SILENT 前缀由 plugin-api 抑制日志）
+                        reject(new Error('LP_SILENT: 远端后端未提供媒体（未启动或清单为空）'));
                     }
                 });
             });
