@@ -1,5 +1,7 @@
 # 轻量播放器 · 本地媒体（Chrome / Edge 通用扩展）
 
+> 仓库：<https://gitee.com/siwpan/localplayer> ｜ 许可：MIT（见 [LICENSE](LICENSE)）
+
 一个以浏览器扩展（Manifest V3）形式分发的轻量本地媒体播放器，
 支持视频 / 音频混排播放列表、自动下一曲、音频 / 视频模式自动切换。
 
