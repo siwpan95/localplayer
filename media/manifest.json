@@ -45,6 +45,11 @@
     "type": "audio"
   },
   {
+    "name": "公交牌椰汁_正片_undefined.mp4",
+    "file": "公交牌椰汁_正片_undefined.mp4",
+    "type": "video"
+  },
+  {
     "name": "dummy (2).mp4",
     "file": "album_output/dummy (2).mp4",
     "type": "video"
@@ -23840,6 +23845,11 @@
     "type": "audio"
   },
   {
+    "name": "20260916-204135_deep_house_122bpm_61bars_classic_drop_shebib.wav",
+    "file": "album_output/wav/20260916-204135_deep_house_122bpm_61bars_classic_drop_shebib.wav",
+    "type": "audio"
+  },
+  {
     "name": "_verify.wav",
     "file": "album_output/wav/_verify.wav",
     "type": "audio"
@@ -26715,6 +26725,161 @@
     "type": "audio"
   },
   {
+    "name": "phonk_remix_20260917_225826.wav",
+    "file": "album_output/wav/phonk_remix_20260917_225826.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_230116.wav",
+    "file": "album_output/wav/phonk_remix_20260917_230116.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_230831.wav",
+    "file": "album_output/wav/phonk_remix_20260917_230831.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_230855.wav",
+    "file": "album_output/wav/phonk_remix_20260917_230855.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_230916.wav",
+    "file": "album_output/wav/phonk_remix_20260917_230916.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_230958.wav",
+    "file": "album_output/wav/phonk_remix_20260917_230958.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231027.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231027.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231058.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231058.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231132.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231132.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231226.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231226.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231301.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231301.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231327.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231327.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231353.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231353.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231419.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231419.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231458.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231458.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231532.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231532.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231606.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231606.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231644.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231644.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231723.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231723.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231757.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231757.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231827.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231827.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_231920.wav",
+    "file": "album_output/wav/phonk_remix_20260917_231920.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_232013.wav",
+    "file": "album_output/wav/phonk_remix_20260917_232013.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_232052.wav",
+    "file": "album_output/wav/phonk_remix_20260917_232052.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_232136.wav",
+    "file": "album_output/wav/phonk_remix_20260917_232136.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_232313.wav",
+    "file": "album_output/wav/phonk_remix_20260917_232313.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_232342.wav",
+    "file": "album_output/wav/phonk_remix_20260917_232342.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_232453.wav",
+    "file": "album_output/wav/phonk_remix_20260917_232453.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_232523.wav",
+    "file": "album_output/wav/phonk_remix_20260917_232523.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_232606.wav",
+    "file": "album_output/wav/phonk_remix_20260917_232606.wav",
+    "type": "audio"
+  },
+  {
+    "name": "phonk_remix_20260917_232645.wav",
+    "file": "album_output/wav/phonk_remix_20260917_232645.wav",
+    "type": "audio"
+  },
+  {
     "name": "pluck (10).wav",
     "file": "album_output/wav/pluck (10).wav",
     "type": "audio"
@@ -27750,6 +27915,11 @@
     "type": "audio"
   },
   {
+    "name": "主旋律 (3).wav",
+    "file": "album_output/wav/主旋律 (3).wav",
+    "type": "audio"
+  },
+  {
     "name": "主旋律.wav",
     "file": "album_output/wav/主旋律.wav",
     "type": "audio"
@@ -28445,6 +28615,11 @@
     "type": "audio"
   },
   {
+    "name": "低音贝斯 (3).wav",
+    "file": "album_output/wav/低音贝斯 (3).wav",
+    "type": "audio"
+  },
+  {
     "name": "低音贝斯.wav",
     "file": "album_output/wav/低音贝斯.wav",
     "type": "audio"
@@ -28662,6 +28837,11 @@
   {
     "name": "和弦铺底 (138).wav",
     "file": "album_output/wav/和弦铺底 (138).wav",
+    "type": "audio"
+  },
+  {
+    "name": "和弦铺底 (139).wav",
+    "file": "album_output/wav/和弦铺底 (139).wav",
     "type": "audio"
   },
   {
@@ -29362,6 +29542,11 @@
   {
     "name": "氛围铺底 (138).wav",
     "file": "album_output/wav/氛围铺底 (138).wav",
+    "type": "audio"
+  },
+  {
+    "name": "氛围铺底 (139).wav",
+    "file": "album_output/wav/氛围铺底 (139).wav",
     "type": "audio"
   },
   {
@@ -30067,6 +30252,11 @@
   {
     "name": "电子鼓 (136).wav",
     "file": "album_output/wav/电子鼓 (136).wav",
+    "type": "audio"
+  },
+  {
+    "name": "电子鼓 (137).wav",
+    "file": "album_output/wav/电子鼓 (137).wav",
     "type": "audio"
   },
   {
@@ -31255,13 +31445,1933 @@
     "type": "audio"
   },
   {
+    "name": "少年不流氓发育不正常 - A Haunting Horror (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - A Haunting Horror (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - A Haunting Horror.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - A Haunting Horror.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - Fight Till the End (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - Fight Till the End (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - Fight Till the End.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - Fight Till the End.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - Fury of the Nordic Battlefield (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - Fury of the Nordic Battlefield (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - Fury of the Nordic Battlefield.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - Fury of the Nordic Battlefield.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - Liminal Corridor (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - Liminal Corridor (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - Liminal Corridor.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - Liminal Corridor.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - Liminal Echoes (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - Liminal Echoes (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - Liminal Echoes.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - Liminal Echoes.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - Toxin (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - Toxin (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - Toxin.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - Toxin.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - ♡+♡=♡² (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - ♡+♡=♡² (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - ♡+♡=♡².wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - ♡+♡=♡².wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 一天的自由 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 一天的自由 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 一天的自由.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 一天的自由.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 一起死去 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 一起死去 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 一起死去.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 一起死去.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 乌合之众.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 乌合之众.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 互联网.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 互联网.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 你不是机器.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 你不是机器.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 光影里 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 光影里 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 光影里.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 光影里.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 加冕为王 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 加冕为王 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 加冕为王.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 加冕为王.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 千禧年 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 千禧年 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 千禧年.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 千禧年.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 午夜失真磁带 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 午夜失真磁带 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 午夜失真磁带.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 午夜失真磁带.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 南音安详 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 南音安详 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 南音安详.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 南音安详.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 后室be like (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 后室be like (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 后室be like.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 后室be like.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 咬住脉搏 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 咬住脉搏 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 咬住脉搏.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 咬住脉搏.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 四大皆空.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 四大皆空.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 墙内脉搏 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 墙内脉搏 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 墙内脉搏.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 墙内脉搏.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 声音屠宰场 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 声音屠宰场 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 声音屠宰场.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 声音屠宰场.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 孤单听众 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 孤单听众 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 孤单听众.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 孤单听众.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 慢慢爱上你 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 慢慢爱上你 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 慢慢爱上你 (2).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 慢慢爱上你 (2).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 慢慢爱上你 (3).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 慢慢爱上你 (3).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 慢慢爱上你.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 慢慢爱上你.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 我和我的车 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 我和我的车 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 我和我的车.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 我和我的车.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 接化发 Remix (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 接化发 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 接化发 Remix.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 接化发 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 撕碎沉默 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 撕碎沉默 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 撕碎沉默.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 撕碎沉默.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 放下牵绊.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 放下牵绊.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 晕眩痛快 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 晕眩痛快 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 晕眩痛快.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 晕眩痛快.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 此刻热爱 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 此刻热爱 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 此刻热爱.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 此刻热爱.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 江湖蛊皿.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 江湖蛊皿.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 没关系啊大人 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 没关系啊大人 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 没关系啊大人.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 没关系啊大人.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 浴血怒吼 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 浴血怒吼 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 浴血怒吼.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 浴血怒吼.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 演讲 Remix (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 演讲 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 演讲 Remix.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 演讲 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 烧成火 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 烧成火 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 烧成火.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 烧成火.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 疯狂星期四.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 疯狂星期四.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 破碎的晴朗 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 破碎的晴朗 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 破碎的晴朗.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 破碎的晴朗.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 站得更高 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 站得更高 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 站得更高.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 站得更高.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 群山之巅 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 群山之巅 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 群山之巅.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 群山之巅.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 老地方 Remix (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 老地方 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 老地方 Remix.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 老地方 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 让天空听到 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 让天空听到 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 让天空听到.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 让天空听到.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 跳成一支歌 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 跳成一支歌 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 跳成一支歌.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 跳成一支歌.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 跳进热浪 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 跳进热浪 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 跳进热浪.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 跳进热浪.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 还没忘记 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 还没忘记 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 还没忘记.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 还没忘记.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 逆风前行 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 逆风前行 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 逆风前行.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 逆风前行.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 酣畅淋漓的战斗V2.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 酣畅淋漓的战斗V2.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 钢石囚笼 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 钢石囚笼 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 钢石囚笼.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 钢石囚笼.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 黑暗中徘徊 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 黑暗中徘徊 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 黑暗中徘徊.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 黑暗中徘徊.wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 黑暗唤我 (1).wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 黑暗唤我 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "少年不流氓发育不正常 - 黑暗唤我.wav",
+    "file": "album_output/网易云音乐/cxy/少年不流氓发育不正常 - 黑暗唤我.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - A Glorious Triumph (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - A Glorious Triumph (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - A Glorious Triumph.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - A Glorious Triumph.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - Abandoned Hospital Horror (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - Abandoned Hospital Horror (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - Abandoned Hospital Horror.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - Abandoned Hospital Horror.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - DAO Remix (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - DAO Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - DAO Remix.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - DAO Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - Heart Bounces (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - Heart Bounces (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - Heart Bounces.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - Heart Bounces.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - Pull Me Under (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - Pull Me Under (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - Pull Me Under.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - Pull Me Under.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - Temple Bell (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - Temple Bell (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - Temple Bell.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - Temple Bell.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 不回头奔跑.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 不回头奔跑.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 不是我眼睛 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 不是我眼睛 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 不是我眼睛.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 不是我眼睛.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 不退让.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 不退让.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 两个选择 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 两个选择 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 两个选择.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 两个选择.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 为之奈何？岐伯曰。 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 为之奈何？岐伯曰。 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 为之奈何？岐伯曰。.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 为之奈何？岐伯曰。.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 亲爱的 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 亲爱的 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 亲爱的.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 亲爱的.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 人生朝露 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 人生朝露 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 人生朝露.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 人生朝露.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 今天星期五 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 今天星期五 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 今天星期五.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 今天星期五.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 今日晴宜见你 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 今日晴宜见你 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 今日晴宜见你.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 今日晴宜见你.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 你听 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 你听 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 你听.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 你听.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 你就像艺术品 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 你就像艺术品 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 你就像艺术品.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 你就像艺术品.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 例外吗？ (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 例外吗？ (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 例外吗？.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 例外吗？.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 倒垂的脸 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 倒垂的脸 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 倒垂的脸.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 倒垂的脸.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 做我自己 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 做我自己 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 做我自己.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 做我自己.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 光里不回头 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 光里不回头 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 光里不回头.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 光里不回头.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 全无敌 Remix (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 全无敌 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 全无敌 Remix.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 全无敌 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 冥婚夜 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 冥婚夜 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 冥婚夜.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 冥婚夜.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 别回头 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 别回头 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 别回头 (2).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 别回头 (2).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 别回头 (3).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 别回头 (3).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 别回头.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 别回头.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 劣质呢喃 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 劣质呢喃 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 劣质呢喃.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 劣质呢喃.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 四大皆空 42 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 四大皆空 42 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 四大皆空 42.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 四大皆空 42.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 四大皆空 Remix (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 四大皆空 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 四大皆空 Remix.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 四大皆空 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 困在这里 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 困在这里 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 困在这里.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 困在这里.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 墨岩 Remix (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 墨岩 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 墨岩 Remix.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 墨岩 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 太阳当空照 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 太阳当空照 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 太阳当空照.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 太阳当空照.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 心降落 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 心降落 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 心降落.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 心降落.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 慢慢摇 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 慢慢摇 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 慢慢摇.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 慢慢摇.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 我愿意 Remix (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 我愿意 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 我愿意 Remix.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 我愿意 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 我累了 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 我累了 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 我累了.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 我累了.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 拼图缺你 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 拼图缺你 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 拼图缺你.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 拼图缺你.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 时间的玫瑰 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 时间的玫瑰 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 时间的玫瑰.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 时间的玫瑰.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 暗处真相 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 暗处真相 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 暗处真相.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 暗处真相.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 月下 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 月下 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 月下.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 月下.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 月光没变过 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 月光没变过 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 月光没变过.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 月光没变过.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 朝开暮落 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 朝开暮落 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 朝开暮落.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 朝开暮落.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 木鱼一响 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 木鱼一响 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 木鱼一响.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 木鱼一响.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 未寄之言 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 未寄之言 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 未寄之言.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 未寄之言.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 梦魇轻语.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 梦魇轻语.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 残带回响 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 残带回响 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 残带回响.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 残带回响.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 沉沦与遐想 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 沉沦与遐想 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 沉沦与遐想.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 沉沦与遐想.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 活成屋檐 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 活成屋檐 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 活成屋檐 (2).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 活成屋檐 (2).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 活成屋檐 (3).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 活成屋檐 (3).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 活成屋檐.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 活成屋檐.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 燃烧的沉默 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 燃烧的沉默 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 燃烧的沉默.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 燃烧的沉默.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 爱你哟 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 爱你哟 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 爱你哟.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 爱你哟.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 爱如初见 Remix (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 爱如初见 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 爱如初见 Remix.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 爱如初见 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 爱是什么 Remix (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 爱是什么 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 爱是什么 Remix.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 爱是什么 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 牛铃真好吃 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 牛铃真好吃 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 牛铃真好吃.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 牛铃真好吃.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 牵着你 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 牵着你 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 牵着你.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 牵着你.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 童谣(Remix版).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 童谣(Remix版).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 等你以前，等我以后 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 等你以前，等我以后 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 等你以前，等我以后.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 等你以前，等我以后.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 等你说晚安 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 等你说晚安 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 等你说晚安.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 等你说晚安.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 纯音乐 Remix (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 纯音乐 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 纯音乐 Remix.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 纯音乐 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 群山之巅 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 群山之巅 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 群山之巅.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 群山之巅.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 至少还有你.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 至少还有你.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 舍不得 Remix (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 舍不得 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 舍不得 Remix.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 舍不得 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 让我跟你走 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 让我跟你走 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 让我跟你走.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 让我跟你走.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 走廊吞没 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 走廊吞没 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 走廊吞没.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 走廊吞没.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 车库重低音 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 车库重低音 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 车库重低音.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 车库重低音.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 选边站 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 选边站 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 选边站.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 选边站.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 遇见谁 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 遇见谁 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 遇见谁.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 遇见谁.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 道 Remix (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 道 Remix (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 道 Remix.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 道 Remix.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 那片潮水 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 那片潮水 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 那片潮水.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 那片潮水.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 隧道狂奔 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 隧道狂奔 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 隧道狂奔.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 隧道狂奔.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 雨里等你 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 雨里等你 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 雨里等你.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 雨里等你.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 雾里开 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 雾里开 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 雾里开.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 雾里开.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 骨旗 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 骨旗 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 骨旗.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 骨旗.wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 黑暗吞没 (1).wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 黑暗吞没 (1).wav",
+    "type": "audio"
+  },
+  {
+    "name": "潘思卫 - 黑暗吞没.wav",
+    "file": "album_output/网易云音乐/psw/潘思卫 - 黑暗吞没.wav",
+    "type": "audio"
+  },
+  {
+    "name": "live_20260905_231654.mkv",
+    "file": "image/live_20260905_231654.mkv",
+    "type": "video"
+  },
+  {
+    "name": "pixabay_music_2b23ec8252ac.mp3",
+    "file": "image/pixabay_music_2b23ec8252ac.mp3",
+    "type": "audio"
+  },
+  {
+    "name": "pixabay_music_306f4d390ecf.mp3",
+    "file": "image/pixabay_music_306f4d390ecf.mp3",
+    "type": "audio"
+  },
+  {
+    "name": "pixabay_music_63cd11132f63.mp3",
+    "file": "image/pixabay_music_63cd11132f63.mp3",
+    "type": "audio"
+  },
+  {
+    "name": "pixabay_music_6f234de205a7.mp3",
+    "file": "image/pixabay_music_6f234de205a7.mp3",
+    "type": "audio"
+  },
+  {
+    "name": "pixabay_music_af1d09dce554.mp3",
+    "file": "image/pixabay_music_af1d09dce554.mp3",
+    "type": "audio"
+  },
+  {
+    "name": "pixabay_video_94da8079e836.mp4",
+    "file": "image/pixabay_video_94da8079e836.mp4",
+    "type": "video"
+  },
+  {
+    "name": "pixabay_video_b1c9bf783aba.mp4",
+    "file": "image/pixabay_video_b1c9bf783aba.mp4",
+    "type": "video"
+  },
+  {
+    "name": "pixabay_video_c6de81872423.mp4",
+    "file": "image/pixabay_video_c6de81872423.mp4",
+    "type": "video"
+  },
+  {
+    "name": "pixabay_video_ce2811dc8d14.mp4",
+    "file": "image/pixabay_video_ce2811dc8d14.mp4",
+    "type": "video"
+  },
+  {
+    "name": "pixabay_video_f2e854631fac.mp4",
+    "file": "image/pixabay_video_f2e854631fac.mp4",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E01.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E01.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E02.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E02.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E03.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E03.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E04.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E04.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E05.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E05.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E06.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E06.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E07.720p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E07.720p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E08.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E08.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E09.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E09.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E10.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E10.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E11.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E11.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E12.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E12.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E13.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E13.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E14.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E14.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E15.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E15.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E16.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E16.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E17.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E17.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E18.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E18.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E19.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E19.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
+    "name": "Moving.S01E20.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "file": "moving/Moving.S01E20.1080p.WEB.h264-EDITH[eztv.re].mkv",
+    "type": "video"
+  },
+  {
     "name": "index.m3u8",
     "file": "《蜂鸟行动》正片高清免费在线观看-2026年动作片-电影天堂 - 每日更新海量高清大片，热门电影免费在线畅看.m3u8/index.m3u8",
     "type": "video"
   },
   {
+    "name": "二战.mp4",
+    "file": "使命召唤/二战.mp4",
+    "type": "video"
+  },
+  {
+    "name": "使命召唤11.mp4",
+    "file": "使命召唤/使命召唤11.mp4",
+    "type": "video"
+  },
+  {
+    "name": "先锋.mp4",
+    "file": "使命召唤/先锋.mp4",
+    "type": "video"
+  },
+  {
+    "name": "冷战.mp4",
+    "file": "使命召唤/冷战.mp4",
+    "type": "video"
+  },
+  {
+    "name": "现代战争2.mp4",
+    "file": "使命召唤/现代战争2.mp4",
+    "type": "video"
+  },
+  {
+    "name": "现代战争2019.mp4",
+    "file": "使命召唤/现代战争2019.mp4",
+    "type": "video"
+  },
+  {
+    "name": "现代战争2022.mp4",
+    "file": "使命召唤/现代战争2022.mp4",
+    "type": "video"
+  },
+  {
+    "name": "黑色行动1.mp4",
+    "file": "使命召唤/黑色行动1.mp4",
+    "type": "video"
+  },
+  {
+    "name": "黑色行动2.mp4",
+    "file": "使命召唤/黑色行动2.mp4",
+    "type": "video"
+  },
+  {
+    "name": "index.m3u8",
+    "file": "求救信号-免费在线观看-爱看机器人-ikanbot.com.m3u8/index.m3u8",
+    "type": "video"
+  },
+  {
+    "name": "Resident Evil 0.mp4",
+    "file": "生化危机/Resident Evil 0.mp4",
+    "type": "video"
+  },
+  {
+    "name": "惡靈古堡 HD REMASTER 吉兒篇.mp4",
+    "file": "生化危机/惡靈古堡 HD REMASTER 吉兒篇.mp4",
+    "type": "video"
+  },
+  {
+    "name": "惡靈古堡 克里斯篇.mp4",
+    "file": "生化危机/惡靈古堡 克里斯篇.mp4",
+    "type": "video"
+  },
+  {
+    "name": "惡靈古堡3中文版.mp4",
+    "file": "生化危机/惡靈古堡3中文版.mp4",
+    "type": "video"
+  },
+  {
+    "name": "惡靈古堡8：蘿絲之影.mp4",
+    "file": "生化危机/惡靈古堡8：蘿絲之影.mp4",
+    "type": "video"
+  },
+  {
+    "name": "生化危机5.mkv",
+    "file": "生化危机/生化危机5.mkv",
+    "type": "video"
+  },
+  {
+    "name": "生化危机：浣熊市故事.mp4",
+    "file": "生化危机/生化危机：浣熊市故事.mp4",
+    "type": "video"
+  },
+  {
+    "name": "生化危机：浣熊市故事.mp4",
+    "file": "生化危机/生化危机：浣熊市故事.mp4.sb-78f302f4-3WSgGY/生化危机：浣熊市故事.mp4",
+    "type": "video"
+  },
+  {
+    "name": "c21世j安q撤l.2024.HD1080p.国语中字.mp4",
+    "file": "电影/c21世j安q撤l.2024.HD1080p.国语中字.mp4",
+    "type": "video"
+  },
+  {
+    "name": "y形：夺m舰.2024.HD100p.中文字幕.mp4",
+    "file": "电影/y形：夺m舰.2024.HD100p.中文字幕.mp4",
+    "type": "video"
+  },
+  {
+    "name": "念力.mkv",
+    "file": "电影/念力.mkv",
+    "type": "video"
+  },
+  {
+    "name": "想见你.mkv",
+    "file": "电影/想见你.mkv",
+    "type": "video"
+  },
+  {
+    "name": "让子弹飞.mkv",
+    "file": "电影/让子弹飞.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.TOKYO.MER移动的急救室电影版.2023.BD.1080P.日语中字.mkv",
+    "file": "电影/阳光电影dygod.org.TOKYO.MER移动的急救室电影版.2023.BD.1080P.日语中字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.丑人儿.2024.BD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.丑人儿.2024.BD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.八角笼中.2023.HD.1080P.国语中字.mp4",
+    "file": "电影/阳光电影dygod.org.八角笼中.2023.HD.1080P.国语中字.mp4",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.兵马俑揭秘.2024.HD.1080P.中字.mkv",
+    "file": "电影/阳光电影dygod.org.兵马俑揭秘.2024.HD.1080P.中字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.动物王国.2023.BD.1080P.法语中字.mkv",
+    "file": "电影/阳光电影dygod.org.动物王国.2023.BD.1080P.法语中字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.劫机.2024.BD.1080P.韩语中字.mkv",
+    "file": "电影/阳光电影dygod.org.劫机.2024.BD.1080P.韩语中字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.呼吸.2024.BD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.呼吸.2024.BD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.哆啦A梦：大雄的地球交响乐.2024.BD.1080P.日语中字.mkv",
+    "file": "电影/阳光电影dygod.org.哆啦A梦：大雄的地球交响乐.2024.BD.1080P.日语中字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.太空孤航.2024.BD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.太空孤航.2024.BD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.寂静之地：入侵日.2024.BD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.寂静之地：入侵日.2024.BD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.异星战境.2024.BD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.异星战境.2024.BD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.惊天激战.2024.BD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.惊天激战.2024.BD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.挑战者.2024.BD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.挑战者.2024.BD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.无主之地.2024.BD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.无主之地.2024.BD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.旺卡.2023.BD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.旺卡.2023.BD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.求救眨眨眼.2024.BD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.求救眨眨眼.2024.BD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.消失的女儿.2024.BD.1080P.日语中字.mkv",
+    "file": "电影/阳光电影dygod.org.消失的女儿.2024.BD.1080P.日语中字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.消失的她.2023.HD.1080P.国语中英双字.mp4",
+    "file": "电影/阳光电影dygod.org.消失的她.2023.HD.1080P.国语中英双字.mp4",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.疯狂的麦克斯：狂暴女神.2024.HD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.疯狂的麦克斯：狂暴女神.2024.HD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.神奇旅行社.2024.HD.1080P.国语中字.mkv",
+    "file": "电影/阳光电影dygod.org.神奇旅行社.2024.HD.1080P.国语中字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.网军部队.2024.BD.1080P.韩语中字.mkv",
+    "file": "电影/阳光电影dygod.org.网军部队.2024.BD.1080P.韩语中字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.致命AI.2024.BD.1080P.中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.致命AI.2024.BD.1080P.中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.走私.2023.BD.1080P.韩语中字.mkv",
+    "file": "电影/阳光电影dygod.org.走私.2023.BD.1080P.韩语中字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "阳光电影dygod.org.默杀.2024.HD.1080P.国语中英双字.mkv",
+    "file": "电影/阳光电影dygod.org.默杀.2024.HD.1080P.国语中英双字.mkv",
+    "type": "video"
+  },
+  {
+    "name": "疾速备战.mkv",
+    "file": "疾速追杀/疾速备战.mkv",
+    "type": "video"
+  },
+  {
+    "name": "疾速特攻.mkv",
+    "file": "疾速追杀/疾速特攻.mkv",
+    "type": "video"
+  },
+  {
+    "name": "疾速追杀4.mkv",
+    "file": "疾速追杀/疾速追杀4.mkv",
+    "type": "video"
+  },
+  {
+    "name": "伞学院_S04E01_满足欲望之无法承受的悲剧.mp4",
+    "file": "第 4 季/伞学院_S04E01_满足欲望之无法承受的悲剧.mp4",
+    "type": "video"
+  },
+  {
+    "name": "伞学院_S04E02_洁恩与吉恩.mp4",
+    "file": "第 4 季/伞学院_S04E02_洁恩与吉恩.mp4",
+    "type": "video"
+  },
+  {
+    "name": "伞学院_S04E03_鱿鱼与女孩.mp4",
+    "file": "第 4 季/伞学院_S04E03_鱿鱼与女孩.mp4",
+    "type": "video"
+  },
+  {
+    "name": "伞学院_S04E04_净化.mp4",
+    "file": "第 4 季/伞学院_S04E04_净化.mp4",
+    "type": "video"
+  },
+  {
+    "name": "伞学院_S04E05_六年五个月零两天.mp4",
+    "file": "第 4 季/伞学院_S04E05_六年五个月零两天.mp4",
+    "type": "video"
+  },
+  {
+    "name": "伞学院_S04E06_开始的结束.mp4",
+    "file": "第 4 季/伞学院_S04E06_开始的结束.mp4",
+    "type": "video"
+  },
+  {
     "name": "index.m3u8",
     "file": "罗斯2026 HD中字  高清在线播放 - 电影天堂.m3u8/index.m3u8",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][01][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][01][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][02][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][02][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][03][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][03][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][04][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][04][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][05][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][05][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][06][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][06][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][07][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][07][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][08][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][08][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][09][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][09][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][10][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][10][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][11][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][11][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][12][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][12][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][13][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][13][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][14][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][14][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][15][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][15][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][16][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][16][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][17][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][17][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][18][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][18][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][19][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][19][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][20][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][20][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][21][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][21][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][22][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][22][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][23][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][23][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][24][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][24][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][25][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][25][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][26][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][26][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][27][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][27][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "[Airota][Sousou no Frieren][28][1080p AVC AAC][CHS].mp4",
+    "file": "芙莉莲/[Airota][Sousou no Frieren][28][1080p AVC AAC][CHS].mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S01E01.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s1/西部世界.Westworld.S01E01.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S01E02.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s1/西部世界.Westworld.S01E02.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S01E03.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s1/西部世界.Westworld.S01E03.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S01E04.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s1/西部世界.Westworld.S01E04.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S01E05.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s1/西部世界.Westworld.S01E05.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S01E06.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s1/西部世界.Westworld.S01E06.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S01E07.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s1/西部世界.Westworld.S01E07.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S01E08.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s1/西部世界.Westworld.S01E08.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S01E09.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s1/西部世界.Westworld.S01E09.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S01E10.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s1/西部世界.Westworld.S01E10.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S02E01.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s2/西部世界.Westworld.S02E01.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S02E02.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s2/西部世界.Westworld.S02E02.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S02E03.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s2/西部世界.Westworld.S02E03.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S02E04.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s2/西部世界.Westworld.S02E04.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S02E05.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s2/西部世界.Westworld.S02E05.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S02E06.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s2/西部世界.Westworld.S02E06.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S02E07.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s2/西部世界.Westworld.S02E07.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S02E08.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s2/西部世界.Westworld.S02E08.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S02E09.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s2/西部世界.Westworld.S02E09.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "西部世界.Westworld.S02E10.中英字幕.BDrip.1080P-人人影视.mp4",
+    "file": "西部世界/西部世界s2/西部世界.Westworld.S02E10.中英字幕.BDrip.1080P-人人影视.mp4",
+    "type": "video"
+  },
+  {
+    "name": "Westworld.S03E06.Decoherence.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb.chs.eng.mp4",
+    "file": "西部世界/西部世界s3/Westworld.S03E06.Decoherence.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "Westworld.S03E08.Crisis.Theory.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb.chs.eng.mp4",
+    "file": "西部世界/西部世界s3/Westworld.S03E08.Crisis.Theory.1080p.AMZN.WEB-DL.DDP5.1.H.264-NTb.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "westworld.s03e01.1080p.web.h264-xlf.chs.eng.mp4",
+    "file": "西部世界/西部世界s3/westworld.s03e01.1080p.web.h264-xlf.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "westworld.s03e02.1080p.web.h264-xlf.chs.eng.mp4",
+    "file": "西部世界/西部世界s3/westworld.s03e02.1080p.web.h264-xlf.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "westworld.s03e03.1080p.web.h264-xlf.chs.eng.mp4",
+    "file": "西部世界/西部世界s3/westworld.s03e03.1080p.web.h264-xlf.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "westworld.s03e04.1080p.web.h264-xlf.chs.eng.mp4",
+    "file": "西部世界/西部世界s3/westworld.s03e04.1080p.web.h264-xlf.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "westworld.s03e05.1080p.web.h264-xlf.chs.eng.mp4",
+    "file": "西部世界/西部世界s3/westworld.s03e05.1080p.web.h264-xlf.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "westworld.s03e07.1080p.web.h264-tbs.chs.eng.mp4",
+    "file": "西部世界/西部世界s3/westworld.s03e07.1080p.web.h264-tbs.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "Westworld.S04E04.720p.WEB.h264-KOGi.chs.eng.mp4",
+    "file": "西部世界/西部世界s4/Westworld.S04E04.720p.WEB.h264-KOGi.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "Westworld.S04E05.1080p.WEB.H264-PECULATE.chs.eng.mp4",
+    "file": "西部世界/西部世界s4/Westworld.S04E05.1080p.WEB.H264-PECULATE.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "Westworld.S04E06.1080p.WEB.h264-KOGi.mp4",
+    "file": "西部世界/西部世界s4/Westworld.S04E06.1080p.WEB.h264-KOGi.mp4",
+    "type": "video"
+  },
+  {
+    "name": "westworld.s04e01.1080p.web.h264-cakes.chs.eng.mp4",
+    "file": "西部世界/西部世界s4/westworld.s04e01.1080p.web.h264-cakes.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "westworld.s04e02.1080p.web.h264-cakes.chs.eng.mp4",
+    "file": "西部世界/西部世界s4/westworld.s04e02.1080p.web.h264-cakes.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "westworld.s04e03.1080p.web.h264-cakes.chs.eng.mp4",
+    "file": "西部世界/西部世界s4/westworld.s04e03.1080p.web.h264-cakes.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "westworld.s04e07.1080p.web.h264-cakes.chs.eng.mp4",
+    "file": "西部世界/西部世界s4/westworld.s04e07.1080p.web.h264-cakes.chs.eng.mp4",
+    "type": "video"
+  },
+  {
+    "name": "westworld.s04e08.1080p.web.h264-glhf.chs.eng.mp4",
+    "file": "西部世界/西部世界s4/westworld.s04e08.1080p.web.h264-glhf.chs.eng.mp4",
     "type": "video"
   }
 ]
