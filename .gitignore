@@ -8,7 +8,9 @@ Thumbs.db
 # 媒体文件（用户自有内容，非项目源码，不纳入版本库；仅保留说明文档 media/README.md）
 /media/*
 !/media/README.md
-!/media/manifest.json
+# 2026-09-28：media/manifest.json 是**可重新生成的产物**（用户口径：产物、可手动更新），
+# 此前被 `!/media/manifest.json` 显式放行并入库（约 950 KB）。取消放行 ⇒ 由上面的 /media/* 接管，
+# 同时 `git rm --cached` 撤出跟踪（文件保留在盘上，不影响本地使用）。
 
 # Python
 __pycache__/
