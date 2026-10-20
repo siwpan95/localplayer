@@ -141,7 +141,7 @@ LocalPlayer.plugins.register({
 
 ## 联动 private-radio-stations（把本扩展当它的音视频播放器）
 
-本扩展可以当作 [private-radio-stations](../private-radio-stations-master)（本地转播站）的播放器前端：
+本扩展可以当作 [private-radio-stations](https://gitee.com/siwpan/private-radio-stations)（本地转播站）的播放器前端：
 在那边起一个聚合桥，这里的播放列表就自动出现它的媒体源。
 
 ```
@@ -188,7 +188,7 @@ private-radio-stations  ──  npm run bridge  ──▶  http://127.0.0.1:8787
 
 - 扩展侧只有 [`plugins/radio-stations-source.js`](plugins/radio-stations-source.js) 一个文件，
   它注册一个媒体源，**没有改动 `popup.js`**（`loadMedia()` 本就走插件链）。
-- 聚合逻辑在[对端的 `scripts/localplayer-bridge.mjs`](../private-radio-stations-master/scripts/localplayer-bridge.mjs)：
+- 聚合逻辑在[对端的 `scripts/localplayer-bridge.mjs`](https://gitee.com/siwpan/private-radio-stations/blob/master/scripts/localplayer-bridge.mjs)：
   数据归拥有数据的一方，扩展保持薄；对端那份还有 `npm test` 覆盖的集成测试
   （起假上游验证聚合与降级）。
 - MV3 下扩展页跨域必须显式授权，故 `manifest.json` 补了 8787 端口的 `host_permissions`。
